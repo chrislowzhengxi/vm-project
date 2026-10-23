@@ -1,0 +1,221 @@
+                                                          value
+VMs (rows)                                         2.695548e+06
+columns                                            1.100000e+01
+unique subscriptions                               6.687000e+03
+unique deployments                                 3.320500e+04
+trace start (s)                                    0.000000e+00
+trace end (s)                                      2.591400e+06
+trace length (days)                                2.999306e+01
+timestamp resolution (s)                           3.000000e+02
+VMs created at t=0 (pre-existing, left-censored)   2.273160e+05
+VMs alive at trace end (right-censored)            2.245090e+05
+VMs newly created in trace (modelling population)  2.468232e+06
+subscriptions with >=1 new VM                      3.499000e+03
+deployments with >=1 new VM                        2.820800e+04
+deployment-table rows                              3.320500e+04
+subscription-table rows                            6.687000e+03
+                                           value
+share p95 < 1%                      1.422342e-01
+share p95 >= 99%                    2.495714e-03
+share p95 == 100%                   1.742138e-05
+share p95 <= 25%                    3.520455e-01
+share 25 < p95 <= 50%               1.486603e-01
+share 50 < p95 <= 75%               1.885528e-01
+share p95 > 75%                     3.107415e-01
+distinct p95 values                 2.468082e+06
+share in 10 most common values      6.482373e-05
+share VMs with lifetime <= 5 min    1.966618e-01
+share VMs with lifetime < 1 h       6.848250e-01
+share p95 == maxcpu (few readings)  7.476631e-01
+Stage 1 done.
+split                       train            val           test
+n                    1.747514e+06  293872.000000  426846.000000
+start_day            3.472222e-03      21.000000      25.000000
+end_day              2.099653e+01      24.996528      29.993056
+mean_p95             4.793573e+01      51.371667      46.417940
+subs                 3.015000e+03    1462.000000    1726.000000
+share_sub_cold       8.187059e-03       0.001593       0.001352
+share_sub_hist_ge1   9.918129e-01       0.998407       0.998648
+share_sub_hist_ge5   9.874078e-01       0.996546       0.996938
+share_sub_hist_ge50  9.601708e-01       0.988624       0.987237
+share_brand_new_sub  1.172523e-03       0.000575       0.000553
+share_dep_hist_ge1   9.021427e-01       0.891235       0.901264
+share_dep_prior_ge1  9.758691e-01       0.975918       0.975532
+share_of_rows        7.080023e-01       0.119062       0.172936
+                         count          mean          50%            max
+dep_batch_size       2468232.0     31.718697     9.000000     918.000000
+sub_age_days         2468232.0     14.761755    14.482639      29.993056
+sub_preexisting      2468232.0      0.958560     1.000000       1.000000
+sub_n_prior_created  2468232.0  35992.951552  7821.000000  366224.000000
+sub_n_hist           2468232.0  35717.471061  7590.000000  366087.000000
+sub_hist_mean        2452880.0     47.723133    51.184395      99.422157
+sub_hist_last        2452880.0     59.139690    67.561180     100.000000
+sub_hist_std         2449677.0     23.732487    26.687098      66.970032
+sub_hist_last5_mean  2452880.0     55.560799    57.972519      99.615463
+sub_hist_frac_le25   2452880.0      0.355753     0.252218       1.000000
+sub_hist_frac_le50   2452880.0      0.507485     0.466618       1.000000
+sub_hist_frac_le75   2452880.0      0.691873     0.746389       1.000000
+sub_hist_median      2452880.0     52.599201    52.694485      99.373970
+sub_cold             2468232.0      0.006220     0.000000       1.000000
+dep_n_prior_created  2468232.0   1418.103649   309.000000   18818.000000
+dep_n_hist           2468232.0   1282.891824   241.000000   17503.000000
+dep_hist_mean        2223117.0     46.124680    48.253918      99.355499
+dep_hist_median      2223117.0     49.474998    49.833332      99.482307
+dep_hist_last        2223117.0     59.235588    67.454849     100.000000
+dep_cold             2468232.0      0.099308     0.000000       1.000000
+rows 2468232 cols 45
+[     0s] Baseline: train mean   -        test {'MAE': 32.48449449529365, 'RMSE': 36.29953032934386, 'R2': -0.0017513793406369604}
+[     0s] Baseline: train median -        test {'MAE': 32.52223273159543, 'RMSE': 36.409682311762765, 'R2': -0.007840291330963423}
+[     1s] Baseline: size-group mean -        test {'MAE': 30.529682193248167, 'RMSE': 34.64588221941926, 'R2': 0.08744050816916782}
+[     1s] Baseline: sub hist mean -        test {'MAE': 19.686800109040732, 'RMSE': 26.137813787734427, 'R2': 0.48060656417768854}
+[     3s] Ridge                  A        test {'MAE': 30.101718047159434, 'RMSE': 34.2595156811547, 'R2': 0.10768051660261335}
+[     9s] CART (128 leaves)      A        test {'MAE': 28.091926399580345, 'RMSE': 33.24163936683926, 'R2': 0.15991582346047406}
+[    13s] Random Forest          A        test {'MAE': 28.537303225686827, 'RMSE': 33.170618504603276, 'R2': 0.16350167350143086}
+[    15s] Ridge                  B        test {'MAE': 19.642035176365408, 'RMSE': 25.966567602612262, 'R2': 0.48739005258171675}
+[    58s] CART (128 leaves)      B        test {'MAE': 19.58249186975984, 'RMSE': 26.54530760301686, 'R2': 0.4642854254082932}
+[    86s] Random Forest          B        test {'MAE': 18.953952040184678, 'RMSE': 25.4370120959867, 'R2': 0.5080849267350255}
+[    89s] Ridge                  C        test {'MAE': 19.480273564498997, 'RMSE': 25.77326951796082, 'R2': 0.4949934999722202}
+[   150s] CART (128 leaves)      C        test {'MAE': 18.63817630129929, 'RMSE': 25.40251667206524, 'R2': 0.5094182054327433}
+[   189s] Random Forest          C        test {'MAE': 18.581522353677432, 'RMSE': 24.834715139814755, 'R2': 0.5311042426280979}
+[   199s] importance done
+                        model features split        MAE       RMSE        R2
+1        Baseline: train mean        -  test  32.484494  36.299530 -0.001751
+3      Baseline: train median        -  test  32.522233  36.409682 -0.007840
+5   Baseline: size-group mean        -  test  30.529682  34.645882  0.087441
+7     Baseline: sub hist mean        -  test  19.686800  26.137814  0.480607
+9                       Ridge        A  test  30.101718  34.259516  0.107681
+11          CART (128 leaves)        A  test  28.091926  33.241639  0.159916
+13              Random Forest        A  test  28.537303  33.170619  0.163502
+15                      Ridge        B  test  19.642035  25.966568  0.487390
+17          CART (128 leaves)        B  test  19.582492  26.545308  0.464285
+19              Random Forest        B  test  18.953952  25.437012  0.508085
+21                      Ridge        C  test  19.480274  25.773270  0.494993
+23          CART (128 leaves)        C  test  18.638176  25.402517  0.509418
+25              Random Forest        C  test  18.581522  24.834715  0.531104
+                                                   n  subs   MAE mean   R2 mean  MAE Ridge C  R2 Ridge C   MAE RF A   R2 RF A   MAE RF B   R2 RF B   MAE RF C   R2 RF C
+segment                                                                                                                                                                
+all test VMs                                  426846  1726  32.484494 -0.001751    19.480274    0.494993  28.537303  0.163502  18.953952  0.508085  18.581522  0.531104
+brand-new subscription (0 prior VMs created)     236   145  32.440147 -0.425202    31.561510   -0.324688  31.684329 -0.388986  26.312528 -0.085393  25.581547 -0.063290
+no completed sub history (sub_n_hist = 0)        577   213  33.214220 -0.817210    30.651893   -0.533646  32.122318 -0.751442  24.884446 -0.137640  24.141283 -0.109225
+sub_n_hist >= 1                               426269  1574  32.483507 -0.001683    19.465152    0.495463  28.532451  0.163724  18.945924  0.508291  18.573997  0.531318
+sub_n_hist >= 5                               425539  1323  32.485689 -0.001617    19.458733    0.496124  28.529059  0.163981  18.937829  0.508693  18.565097  0.531760
+sub_n_hist >= 50                              421398   766  32.513877 -0.001523    19.468191    0.496602  28.520905  0.165581  18.931870  0.509069  18.554509  0.532330
+sub_n_hist >= 1000                            388474   263  32.799914 -0.002195    19.371518    0.504911  28.559538  0.177772  18.839226  0.516469  18.453718  0.540117
+1 <= sub_n_hist < 50                            4871   855  29.856136 -0.056845    19.202212    0.349511  29.531312 -0.074839  20.161764  0.403132  20.259871  0.400920
+no completed deployment history                42145  1724  30.456383 -0.025112    18.434739    0.483448  27.410091  0.105825  18.173272  0.511121  17.745943  0.527188
+                                 RF grouped perm. dMAE  CART grouped perm. dMAE
+subscription p95 history                     15.472756                17.431567
+VM size (cores, memory)                       2.274558                 2.222372
+deployment history                            1.655814                 0.821842
+subscription meta (age, counts)               0.689136                 0.942704
+creation time (hour, dow, day)                0.205423                 0.182750
+deployment batch size                         0.149829                 0.053106
+                     RF perm. dMAE  CART perm. dMAE  RF impurity  CART impurity
+sub_hist_mean             7.258833        16.261045     0.414223       0.865611
+sub_hist_median           2.397287         1.994399     0.133139       0.020838
+sub_hist_frac_le50        1.486619         0.319993     0.123740       0.003555
+cores                     1.017188         1.510605     0.014847       0.017246
+sub_hist_std              0.867192         0.318374     0.015752       0.009588
+sub_hist_frac_le75        0.853974         1.069884     0.044915       0.015714
+dep_hist_mean             0.721782         0.643616     0.037092       0.015533
+sub_hist_frac_le25        0.721322         0.184108     0.048577       0.005675
+mem_per_core              0.622090         0.947738     0.008656       0.009954
+dep_hist_median           0.607847         0.178783     0.028728       0.002562
+memory_gb                 0.523544         0.206828     0.007543       0.004035
+sub_hist_last5_mean       0.482777         0.219975     0.020363       0.002765
+                                                                       n        MAE       RMSE        R2                                 note
+check                                                                                                                                        
+RF C, all test                                                    426846  18.581522  24.834715  0.531104                                     
+RF C, validation period (days 21-24)                              293872  19.093438  24.673614  0.514218                                     
+RF C, test day 25                                                  87796  18.840830  25.072796  0.518633           share right-censored=0.016
+RF C, test day 26                                                  97585  17.450399  24.071839  0.580146           share right-censored=0.019
+RF C, test day 27                                                  91418  19.038115  25.192119  0.516196           share right-censored=0.040
+RF C, test day 28                                                  91851  18.315480  24.873050  0.529597           share right-censored=0.046
+RF C, test day 29                                                  58196  19.789682  25.105881  0.469460           share right-censored=0.152
+RF C, lifetime <= 5 min                                            25997  25.601161  31.804262 -0.905997                        mean p95=19.6
+RF C, lifetime 5 min - 1 h                                        261842  17.061145  24.014937  0.552238                        mean p95=40.9
+RF C, lifetime 1 h - 1 day                                        118618  19.595932  24.137481  0.405007                        mean p95=66.1
+RF C, lifetime > 1 day                                             20389  23.254722  28.746628  0.163312                        mean p95=37.4
+RF C, test excl. top-10 training subscriptions                    328561  17.148196  23.585008  0.573995                                     
+Train-mean baseline, test excl. top-10 subs                       328561  32.728587  36.554147 -0.023331                                     
+Subscription-macro-averaged MAE (each test sub weighted equally)    1726  21.253897        NaN       NaN  train-mean baseline macro MAE=30.58
+LEAKY: RF with lenient sub history (A + running-VM p95)           426846  18.384298  24.657653  0.537767                    compare with RF B
+LEAKY: RF C + lifetime + vmcategory                               426846  15.707259  21.796545  0.638812      illustrates leakage, not usable
+RF C without dep_batch_size                                       426846  18.709572  24.971402  0.525929                                     
+RF C trained only on labels observable by day 21                  426846  18.777775  24.977105  0.525712                 train rows=1,703,020
+Stage 3 done in 335s
+[   36s] direct RF fitted
+[   96s] lambda=1 done
+[  101s] lambda=2 done
+[  107s] lambda=5 done
+[  112s] lambda=10 done
+                     train       val      test  all new VMs
+P95 <= 25%        0.354304  0.313466  0.369358     0.352046
+25% < P95 <= 50%  0.148715  0.143995  0.151650     0.148660
+50% < P95 <= 75%  0.188012  0.200444  0.182581     0.188553
+P95 > 75%         0.308969  0.342095  0.296411     0.310741
+                                            avg reserved  % under-provisioned  mean shortfall  mean waste  cost l=1  cost l=2  cost l=5  cost l=10   share 25%   share 50%   share 75%  share 100%
+Always 25%                                      0.250000            63.064196        0.284946    0.070766  0.534946  0.819891  1.674728   3.099456  100.000000    0.000000    0.000000    0.000000
+Always 50%                                      0.500000            47.899242        0.144773    0.180594  0.644773  0.789546  1.223866   1.947731    0.000000  100.000000    0.000000    0.000000
+Always 75%                                      0.750000            29.641135        0.048864    0.334685  0.798864  0.847728  0.994321   1.238642    0.000000    0.000000  100.000000    0.000000
+Always 100%                                     1.000000             0.000000        0.000000    0.535821  1.000000  1.000000  1.000000   1.000000    0.000000    0.000000    0.000000  100.000000
+Threshold routing on predicted P95 (Ridge)      0.605818            28.164725        0.049804    0.191443  0.655622  0.705426  0.854839   1.103860   17.769641   33.964943   36.433983   11.831433
+Threshold routing on predicted P95 (CART)       0.604563            24.719922        0.048461    0.188845  0.653024  0.701486  0.846870   1.089177   19.753729   39.106610   20.700440   20.439222
+Threshold routing on predicted P95 (RF)         0.597522            28.389864        0.050169    0.183511  0.647691  0.697859  0.848365   1.099208   18.881048   34.104806   36.138326   10.875819
+Oracle (smallest sufficient tier)               0.601511             0.000000        0.000000    0.137332  0.601511  0.601511  0.601511   0.601511   36.935804   15.164954   18.258107   29.641135
+lambda                                 1         2         5         10
+Best fixed (val)                 0.534946  0.789546  1.000000  1.000000
+Ridge naive threshold            0.655622  0.705426  0.854839  1.103860
+Ridge + margin (val-tuned)       0.537260  0.697134  0.803186  0.855922
+CART naive threshold             0.653024  0.701486  0.846870  1.089177
+CART + margin (val-tuned)        0.540005  0.690697  0.805259  0.860929
+RF naive threshold               0.647691  0.697859  0.848365  1.099208
+RF + margin (val-tuned)          0.536358  0.689982  0.804187  0.848369
+Direct cost-aware CART           0.534946  0.694018  0.811585  0.855110
+Direct cost-aware RF             0.534946  0.686573  0.785197  0.833820
+Depth-3 policy tree              0.534946  0.698199  0.805809  0.867433
+Oracle (hindsight cost-optimal)  0.534946  0.570838  0.589005  0.595220
+                            1          2          5          10
+Ridge naive threshold      NaN  38.462194  35.319417 -25.658343
+Ridge + margin (val-tuned) NaN  42.253492  47.887263  35.594097
+CART naive threshold       NaN  40.263961  37.258324 -22.031063
+CART + margin (val-tuned)  NaN  45.196768  47.382750  34.357173
+RF naive threshold         NaN  41.922023  36.894544 -24.509160
+RF + margin (val-tuned)    NaN  45.524018  47.643502  37.460194
+Direct cost-aware CART     NaN  43.678226  45.843678  35.794724
+Direct cost-aware RF       NaN  47.082755  52.264203  41.054503
+Depth-3 policy tree        NaN  41.766579  47.249058  32.750527
+                                 avg reserved  % under-provisioned  mean shortfall  mean waste  cost l=1  cost l=2  cost l=5  cost l=10  share 25%  share 50%  share 75%  share 100%
+Ridge + margin                       0.729046            10.466070        0.014828    0.279694  0.743874  0.758702  0.803186   0.877326  14.578560  12.771351  39.103330   33.546759
+CART + margin                        0.715202            11.715701        0.018011    0.269034  0.733213  0.751225  0.805259   0.895317  14.884057  14.732480  39.802177   30.581287
+RF + margin                          0.702521            13.713845        0.020333    0.258675  0.722854  0.743188  0.804187   0.905854  15.058124  15.109431  43.598394   26.234052
+Direct RF                            0.724983             9.151544        0.012043    0.272847  0.737026  0.749069  0.785197   0.845410  16.290184  14.310782  32.514537   36.884497
+Direct CART                          0.691037            13.573514        0.024109    0.250967  0.715147  0.739256  0.811585   0.932132  19.577318  20.909180  23.034771   36.478730
+Depth-3 policy tree                  0.720587            11.951617        0.017044    0.273452  0.737631  0.754676  0.805809   0.891030  15.826551   9.650787  44.983905   29.538756
+Best fixed (val)                     1.000000             0.000000        0.000000    0.535821  1.000000  1.000000  1.000000   1.000000   0.000000   0.000000   0.000000  100.000000
+Oracle (cost-optimal, lambda=5)      0.576661             9.940119        0.002469    0.114950  0.579130  0.581599  0.589005   0.601348  39.546113  16.955530  16.786148   26.712210
+   lambda  mean cost saving vs best fixed  95% CI low (sub-cluster bootstrap)  95% CI high   % saving
+0       1                        0.000000                            0.000000     0.000000   0.000000
+1       2                        0.102974                            0.082461     0.123192  13.042136
+2       5                        0.214803                            0.155851     0.286328  21.480338
+3      10                        0.166180                            0.100796     0.239423  16.618025
+                                                           1          2          5          10
+vCPU-weighted      Best fixed (val, same weighting)  0.543523   0.809125   1.000000   1.000000
+                   Direct cost-aware RF              0.543523   0.695274   0.784681   0.820216
+                   Oracle (cost-optimal)             0.543523   0.581000   0.597962   0.603868
+                   % saving of direct RF             0.000000  14.070934  21.531930  17.978414
+vCPU-hour-weighted Best fixed (val, same weighting)  0.514603   0.779205   0.971513   1.000000
+                   Direct cost-aware RF              0.514603   0.671516   0.796768   0.850283
+                   Oracle (cost-optimal)             0.514603   0.549264   0.568327   0.574603
+                   % saving of direct RF             0.000000  13.820442  17.986925  14.971656
+           n  mean_p95  action
+leaf                          
+3      67555  0.015914      25
+4      41194  0.267516      50
+6     128293  0.432437      75
+7       5139  0.505650     100
+10     63719  0.575743      75
+11     19048  0.679312     100
+13     73744  0.730825     100
+14     28154  0.868136     100
+Stage 4 done in 116s

@@ -1,0 +1,22 @@
+|                        | chosen on val   |
+|:-----------------------|:----------------|
+| (1, 'Best fixed')      | 25%             |
+| (1, 'Ridge + margin')  | delta=-50.0 pts |
+| (1, 'CART + margin')   | delta=-50.0 pts |
+| (1, 'RF + margin')     | delta=-50.0 pts |
+| (1, 'Direct CART')     | 8 leaves        |
+| (2, 'Best fixed')      | 50%             |
+| (2, 'Ridge + margin')  | delta=-7.5 pts  |
+| (2, 'CART + margin')   | delta=-7.5 pts  |
+| (2, 'RF + margin')     | delta=-7.5 pts  |
+| (2, 'Direct CART')     | 32 leaves       |
+| (5, 'Best fixed')      | 100%            |
+| (5, 'Ridge + margin')  | delta=+12.5 pts |
+| (5, 'CART + margin')   | delta=+10.0 pts |
+| (5, 'RF + margin')     | delta=+10.0 pts |
+| (5, 'Direct CART')     | 2048 leaves     |
+| (10, 'Best fixed')     | 100%            |
+| (10, 'Ridge + margin') | delta=+22.5 pts |
+| (10, 'CART + margin')  | delta=+20.0 pts |
+| (10, 'RF + margin')    | delta=+22.5 pts |
+| (10, 'Direct CART')    | 512 leaves      |

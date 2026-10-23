@@ -1,0 +1,4 @@
+file,compressed_MB,uncompressed_MB,rows,columns
+trace_data_vmtable_vmtable.csv.gz,437.594496,821.187772,2695548,11
+trace_data_deployments_deployments.csv.gz,2.022207,3.068921,33205,2
+trace_data_subscriptions_subscriptions.csv.gz,0.351674,0.478418,6687,3

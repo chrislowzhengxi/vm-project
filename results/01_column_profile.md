@@ -1,0 +1,13 @@
+| column            | dtype    |   missing_% |   n_unique | examples                                                | known_at_creation                          |
+|:------------------|:---------|------------:|-----------:|:--------------------------------------------------------|:-------------------------------------------|
+| vmid              | category |        0.00 |    2695548 | 71fJw0x+SDRdAx..., rKggHO/04j31UF..., YrR8gPtBmfNaOd... | ID only (not a feature)                    |
+| subscriptionid    | category |        0.00 |       6687 | GB6uQC1NSArW5n..., ub4ty8ygwOECrI..., 9LrdYRcUfGbmL2... | yes - grouping key only                    |
+| deploymentid      | category |        0.00 |      33205 | 2sh/ZjaYdfpslv..., +ZraIDUNaWYDZM..., GEyIElfPSFupze... | yes - grouping key only                    |
+| vmcreated         | int64    |        0.00 |       8639 | 558300, 424500, 1133100                                 | yes                                        |
+| vmdeleted         | int64    |        0.00 |       8639 | 1673700, 425400, 1133700                                | NO (future)                                |
+| maxcpu            | float64  |        0.00 |    2695191 | 91.77688542119..., 37.87926050069..., 0.304367613133... | NO (target-like, post-run)                 |
+| avgcpu            | float64  |        0.00 |    2695440 | 0.728878804625..., 3.325357662745..., 0.220553316633... | NO (post-run)                              |
+| p95maxcpu         | float64  |        0.00 |    2695397 | 20.75962951497..., 37.87926050069..., 0.304367613133... | NO (TARGET)                                |
+| vmcategory        | category |        0.00 |          3 | Delay-insensit..., Unknown, Interactive                 | NO (assigned from >=3 days of utilization) |
+| vmcorecountbucket | category |        0.00 |          5 | 8, 4, 2                                                 | yes (requested size)                       |
+| vmmemorybucket    | category |        0.00 |          6 | 32, 4, 64                                               | yes (requested size)                       |

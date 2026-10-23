@@ -1,0 +1,6 @@
+,value
+deployments,33205.0
+share where deploymentsize == #VMs in vmtable,0.5033579280228881
+mean deploymentsize,23.77702153290167
+mean #VMs in vmtable,81.17897906941725
+"corr(deploymentsize, #VMs)",0.5966424443392077
