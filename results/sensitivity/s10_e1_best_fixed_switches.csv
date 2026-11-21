@@ -1,0 +1,22 @@
+split,best fixed tier,beta from,beta to
+train,25%,1.0,1.7360491227720332
+train,50%,1.7360491227720332,2.4870200994872214
+train,75%,2.4870200994872214,4.746783615465672
+train,100%,4.746783615465672,20.0
+train,pairwise break-even 25% vs 50%,1.7360491227720332,
+train,pairwise break-even 50% vs 75%,2.4870200994872214,
+train,pairwise break-even 75% vs 100%,4.746783615465672,
+validation,25%,1.0,1.604032131157575
+validation,50%,1.604032131157575,2.286967232331954
+validation,75%,2.286967232331954,4.458020426057796
+validation,100%,4.458020426057796,20.0
+validation,pairwise break-even 25% vs 50%,1.604032131157575,
+validation,pairwise break-even 50% vs 75%,2.286967232331954,
+validation,pairwise break-even 75% vs 100%,4.458020426057796,
+test (retrospective),25%,1.0,1.7835171235291047
+test (retrospective),50%,1.7835171235291047,2.6066403704981385
+test (retrospective),75%,2.6066403704981385,5.116219229388339
+test (retrospective),100%,5.116219229388339,20.0
+test (retrospective),pairwise break-even 25% vs 50%,1.7835171235291047,
+test (retrospective),pairwise break-even 50% vs 75%,2.6066403704981385,
+test (retrospective),pairwise break-even 75% vs 100%,5.116219229388339,

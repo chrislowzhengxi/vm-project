@@ -1,0 +1,21 @@
+[     2s] E1 done
+[     3s] E2 OPT-exact depth 1: 1s
+[     8s] E2 OPT-exact depth 2: 5s
+[   251s] E2 OPT-exact depth 3: 243s
+[   362s] E2 greedy + CART-MSE: 105s
+[   413s] E2 beta-free models + heuristics done (forest refit 48s)
+[   416s] E2 done
+[   416s] E3 m=0.01: reused cache
+[   416s] E3 m=0.05: reused cache
+[   416s] E3 done
+[   417s] E4 done
+{
+ "E1_s": 0.45847392082214355,
+ "forest_refit_s": 48.185763120651245,
+ "E2_s": 414.64942502975464,
+ "E3_s": 0.08823609352111816,
+ "E4_s": 0.5561141967773438,
+ "peak_rss_GB": 2.1885986328125,
+ "total_s": 417.49857115745544
+}
+[   417s] Stage 10 done

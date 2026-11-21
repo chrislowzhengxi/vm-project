@@ -1,0 +1,25 @@
+beta,policy,test cost,% saving vs best fixed (val)
+1.5,OPT-exact built for beta=5 (fixed),0.7533751470509128,-11.212684983129458
+1.5,Cost-aware RF decided at beta=5 (fixed),0.7426130557908611,-9.623992988511626
+2.0,OPT-exact built for beta=5 (fixed),0.7598957797990967,3.7553758760464735
+2.0,Cost-aware RF decided at beta=5 (fixed),0.7485358885471757,5.194163263336855
+3.0,OPT-exact built for beta=5 (fixed),0.7729370452954647,13.791723809901457
+3.0,Cost-aware RF decided at beta=5 (fixed),0.7603815540598056,15.192080103773112
+4.0,OPT-exact built for beta=5 (fixed),0.7859783107918324,16.867879676945126
+4.0,Cost-aware RF decided at beta=5 (fixed),0.7722272195724351,18.322318500673695
+5.0,OPT-exact built for beta=5 (fixed),0.7990195762882003,20.098042371179968
+5.0,Cost-aware RF decided at beta=5 (fixed),0.7840728850850647,21.59271149149353
+6.0,OPT-exact built for beta=5 (fixed),0.8120608417845682,18.793915821543184
+6.0,Cost-aware RF decided at beta=5 (fixed),0.7959185505976943,20.408144940230567
+7.0,OPT-exact built for beta=5 (fixed),0.8251021072809361,17.489789271906385
+7.0,Cost-aware RF decided at beta=5 (fixed),0.8077642161103239,19.22357838896761
+8.0,OPT-exact built for beta=5 (fixed),0.838143372777304,16.1856627222696
+8.0,Cost-aware RF decided at beta=5 (fixed),0.8196098816229536,18.039011837704642
+10.0,OPT-exact built for beta=5 (fixed),0.8642259037700395,13.57740962299605
+10.0,Cost-aware RF decided at beta=5 (fixed),0.8433012126482129,15.66987873517871
+12.0,OPT-exact built for beta=5 (fixed),0.8903084347627752,10.969156523722479
+12.0,Cost-aware RF decided at beta=5 (fixed),0.8669925436734722,13.300745632652777
+15.0,OPT-exact built for beta=5 (fixed),0.9294322312518789,7.05677687481211
+15.0,Cost-aware RF decided at beta=5 (fixed),0.9025295402113612,9.747045978863877
+20.0,OPT-exact built for beta=5 (fixed),0.9946385587337181,0.5361441266281908
+20.0,Cost-aware RF decided at beta=5 (fixed),0.9617578677745092,3.8242132225490777

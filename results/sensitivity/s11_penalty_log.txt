@@ -1,0 +1,4 @@
+[     0s] E6 beta=2: 8 hull trees, 15 solves, complete=True, 0s
+[     0s] E6 beta=5: 8 hull trees, 15 solves, complete=True, 0s
+[     1s] E6 beta=10: 7 hull trees, 13 solves, complete=True, 0s
+[     1s] E6 done

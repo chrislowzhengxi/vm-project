@@ -232,18 +232,20 @@ def aggregate(Xb, q, n_bins):
 
 
 # ---------------------------------------------------------------- core vectorized pieces (shared by greedy / DP)
-def _leaf(st, beta, m):
+# `pen` is an additive per-leaf penalty in TOTAL-cost units (lambda * n_train). Because the penalized objective is
+# still a sum over leaves, the exhaustive recursion stays exact; pen = 0.0 reproduces the original numbers exactly.
+def _leaf(st, beta, m, pen=0.0):
     costs = stats_to_costs(st, beta)
-    c = costs.min(-1)
+    c = costs.min(-1) + pen
     return np.where(st[..., 0] >= m, c, np.inf), costs.argmin(-1)
 
 
-def _best_stump(H, beta, m):
+def _best_stump(H, beta, m, pen=0.0):
     """H (..., B, 4): histogram along the split axis. Best cost over thresholds and the arg threshold."""
     cs = np.cumsum(H, axis=-2)
     L = cs[..., :-1, :]
     R = cs[..., -1:, :] - L
-    tot = _leaf(L, beta, m)[0] + _leaf(R, beta, m)[0]
+    tot = _leaf(L, beta, m, pen)[0] + _leaf(R, beta, m, pen)[0]
     t = np.argmin(tot, axis=-1)
     return np.take_along_axis(tot, t[..., None], -1)[..., 0], t
 
@@ -256,12 +258,17 @@ def _better(c_new, c_old):
     return c_new < c_old - _TOL * max(1.0, abs(c_old))
 
 
-def _solve_d1(P, S, idx, beta, m, B):
+def _cfg(c):
+    """Internal config: (beta, min_leaf) or (beta, min_leaf, pen_total)."""
+    return c[0], c[1], (c[2] if len(c) > 2 else 0.0)
+
+
+def _solve_d1(P, S, idx, beta, m, B, pen=0.0):
     tot = S[idx].sum(0)
-    lc, la = _leaf(tot, beta, m)
+    lc, la = _leaf(tot, beta, m, pen)
     best_c, best_tree = float(lc), leaf_node(la)
     for f in range(P.shape[1]):
-        c, t = _best_stump(_hist1(P, S, idx, f, B), beta, m)
+        c, t = _best_stump(_hist1(P, S, idx, f, B), beta, m, pen)
         if _better(c, best_c):
             left, right = idx[P[idx, f] <= t], idx[P[idx, f] > t]
             best_c = float(c)
@@ -270,15 +277,15 @@ def _solve_d1(P, S, idx, beta, m, B):
     return best_c, best_tree
 
 
-def _d1_region(reg, beta, m):
+def _d1_region(reg, beta, m, pen=0.0):
     """Best depth<=1 cost of regions. reg: (p_c, ..., B_c, 4), axis 0 = candidate split feature c."""
-    lc = _leaf(reg[0].sum(-2), beta, m)[0]
-    sc = _best_stump(reg, beta, m)[0].min(0)
+    lc = _leaf(reg[0].sum(-2), beta, m, pen)[0]
+    sc = _best_stump(reg, beta, m, pen)[0].min(0)
     return np.minimum(lc, sc)
 
 
-def _solve_d2(P, S, idx, beta, m, B):
-    best_c, best_tree = _solve_d1(P, S, idx, beta, m, B)
+def _solve_d2(P, S, idx, beta, m, B, pen=0.0):
+    best_c, best_tree = _solve_d1(P, S, idx, beta, m, B, pen)
     Pi, Si, p = P[idx], S[idx], P.shape[1]
     best_root = None
     for a in range(p):
@@ -290,26 +297,27 @@ def _solve_d2(P, S, idx, beta, m, B):
         Pa = np.cumsum(H2, axis=1)
         Lr = Pa[:, :-1]
         Rr = Pa[:, -1:] - Lr
-        root = _d1_region(Lr, beta, m) + _d1_region(Rr, beta, m)
+        root = _d1_region(Lr, beta, m, pen) + _d1_region(Rr, beta, m, pen)
         t0 = int(np.argmin(root))
         if _better(root[t0], best_c):
             best_c, best_root = float(root[t0]), (a, t0)
     if best_root is not None:
         a, t0 = best_root
-        cl, tl = _solve_d1(P, S, idx[Pi[:, a] <= t0], beta, m, B)
-        cr, tr = _solve_d1(P, S, idx[Pi[:, a] > t0], beta, m, B)
+        cl, tl = _solve_d1(P, S, idx[Pi[:, a] <= t0], beta, m, B, pen)
+        cr, tr = _solve_d1(P, S, idx[Pi[:, a] > t0], beta, m, B, pen)
         assert np.isclose(cl + cr, best_c, rtol=1e-7), (cl + cr, best_c)
         best_tree = split_node(a, t0, tl, tr)
     return best_c, best_tree
 
 
 def _solve_d3_multi(P, S, idx, B, configs):
-    """Exact depth<=3 search for several (beta, min_leaf) configs sharing one pass over the 3-D histograms.
+    """Exact depth<=3 search for several (beta, min_leaf[, pen]) configs sharing one pass over the 3-D histograms.
 
     For root split (a, t0) and child split (b, t1) the four grandchild regions are rectangles in (a, b); 2-D prefix
     sums over the (a, b) bins of the joint histogram H[c, a_bin, b_bin, c_bin] give every region for every (t0, t1)
     at once, and a cumulative sum over c_bin gives every grandchild stump. Exhaustive => exact.
     """
+    configs = [_cfg(c) for c in configs]
     Pi, Si, p = P[idx], S[idx], P.shape[1]
     K = len(configs)
     bestL = np.full((K, p, B - 1), np.inf)
@@ -328,51 +336,108 @@ def _solve_d3_multi(P, S, idx, B, configs):
             AB = Pab[:, -1:, :-1]           # any a,  b <= t1
             AA = Pab[:, -1:, -1:]           # everything
             LL, LR, RL, RR = A0, AL - A0, AB - A0, AA - AL - AB + A0
-            for k, (beta, m) in enumerate(configs):
-                bestL[k, a] = np.minimum(bestL[k, a], (_d1_region(LL, beta, m) + _d1_region(LR, beta, m)).min(axis=1))
-                bestR[k, a] = np.minimum(bestR[k, a], (_d1_region(RL, beta, m) + _d1_region(RR, beta, m)).min(axis=1))
+            for k, (beta, m, pen) in enumerate(configs):
+                bestL[k, a] = np.minimum(bestL[k, a], (_d1_region(LL, beta, m, pen)
+                                                       + _d1_region(LR, beta, m, pen)).min(axis=1))
+                bestR[k, a] = np.minimum(bestR[k, a], (_d1_region(RL, beta, m, pen)
+                                                       + _d1_region(RR, beta, m, pen)).min(axis=1))
     results = []
-    for k, (beta, m) in enumerate(configs):
-        best_c, best_tree = _solve_d2(P, S, idx, beta, m, B)
+    for k, (beta, m, pen) in enumerate(configs):
+        best_c, best_tree = _solve_d2(P, S, idx, beta, m, B, pen)
         best_root = None
         for a in range(p):
             cs = np.cumsum(_hist1(P, S, idx, a, B), axis=0)    # child = leaf option
-            root = (np.minimum(bestL[k, a], _leaf(cs[:-1], beta, m)[0])
-                    + np.minimum(bestR[k, a], _leaf(cs[-1:] - cs[:-1], beta, m)[0]))
+            root = (np.minimum(bestL[k, a], _leaf(cs[:-1], beta, m, pen)[0])
+                    + np.minimum(bestR[k, a], _leaf(cs[-1:] - cs[:-1], beta, m, pen)[0]))
             t0 = int(np.argmin(root))
             if _better(root[t0], best_c):
                 best_c, best_root = float(root[t0]), (a, t0)
         if best_root is not None:
             a, t0 = best_root
-            cl, tl = _solve_d2(P, S, idx[Pi[:, a] <= t0], beta, m, B)
-            cr, tr = _solve_d2(P, S, idx[Pi[:, a] > t0], beta, m, B)
+            cl, tl = _solve_d2(P, S, idx[Pi[:, a] <= t0], beta, m, B, pen)
+            cr, tr = _solve_d2(P, S, idx[Pi[:, a] > t0], beta, m, B, pen)
             assert np.isclose(cl + cr, best_c, rtol=1e-7), (cl + cr, best_c)
             best_tree = split_node(a, t0, tl, tr)
         results.append((best_c, best_tree))
     return results
 
 
-def solve_opt_exact(P, S, B, depth, configs):
-    """Globally optimal policy trees (depth <= 3) over the candidate split set, by exhaustive DP on patterns.
+def _solve_d4_multi(P, S, idx, B, configs, deadline=None, progress=None):
+    """Exact depth<=4 search: every depth<=4 tree is either a depth<=3 tree or a root split whose two children are
+    depth<=3 trees, and the objective is separable across the children, so solving both children exactly for every
+    root split is exact. Root splits that leave a child with fewer than min_leaf rows (for every config) are
+    infeasible and skipped. With a deadline the search may stop early: the result is then the best tree over all
+    depth<=3 trees and the evaluated root splits (a valid incumbent, NOT certified)."""
+    configs = [_cfg(c) for c in configs]
+    best = [list(x) for x in _solve_d3_multi(P, S, idx, B, configs)]
+    Pi = P[idx]
+    m_min = min(c[1] for c in configs)
+    b0, m0, p0 = configs[0]
+    cand = []
+    for a in range(P.shape[1]):
+        H = _hist1(P, S, idx, a, B)
+        cs = np.cumsum(H, axis=0)
+        for t0 in range(B - 1):
+            if cs[t0, 0] >= m_min and cs[-1, 0] - cs[t0, 0] >= m_min:
+                stump = float(_leaf(cs[t0], b0, m0, p0)[0] + _leaf(cs[-1] - cs[t0], b0, m0, p0)[0])
+                cand.append((stump, a, t0))
+    cand.sort()                         # promising root splits first, so a partial run keeps a good incumbent
+    done = 0
+    for _, a, t0 in cand:
+        if deadline is not None and time.perf_counter() > deadline:
+            break
+        Ls = _solve_d3_multi(P, S, idx[Pi[:, a] <= t0], B, configs)
+        Rs = _solve_d3_multi(P, S, idx[Pi[:, a] > t0], B, configs)
+        for k in range(len(configs)):
+            c = Ls[k][0] + Rs[k][0]
+            if _better(c, best[k][0]):
+                best[k] = [c, split_node(a, t0, Ls[k][1], Rs[k][1])]
+        done += 1
+        if progress is not None:
+            progress(done, len(cand))
+    return [tuple(x) for x in best], {"root_candidates": len(cand), "evaluated": done, "complete": done == len(cand)}
 
-    configs: list of (beta, min_leaf). Returns one result dict per config (status OPTIMAL, gap 0 by exhaustion).
-    The reported runtime is the wall time of the whole call divided evenly across configs.
+
+def solve_opt_exact(P, S, B, depth, configs, leaf_penalty=0.0, time_limit=None, progress=None):
+    """Globally optimal policy trees (depth <= 4) over the candidate split set, by exhaustive DP on patterns.
+
+    configs: list of (beta, min_leaf) or (beta, min_leaf, lambda). lambda (default `leaf_penalty`) is a penalty per
+    leaf in MEAN-cost units: the solver minimizes mean training cost + lambda * (#leaves). Returns one dict per config;
+    "train_total_cost" is always the UNPENALIZED cost of the returned tree, "penalized_objective_total" includes the
+    penalty. Depth 4 accepts a wall-clock `time_limit` (seconds); if it stops early the status says TIME_LIMIT and
+    the tree is the best found, not a certified optimum. Runtime is the call's wall time divided across configs.
     """
-    if depth not in (0, 1, 2, 3):
-        raise ValueError("exact DP implemented for depth <= 3")
+    if depth not in (0, 1, 2, 3, 4):
+        raise ValueError("exact DP implemented for depth <= 4")
     t0 = time.perf_counter()
-    idx = np.arange(len(P))
-    if depth == 3:
-        sols = _solve_d3_multi(P, S, idx, B, configs)
-    elif depth == 0:
-        sols = [(float(_leaf(S.sum(0), b, m)[0]), leaf_node(_leaf(S.sum(0), b, m)[1])) for b, m in configs]
-    else:
-        sols = [{1: _solve_d1, 2: _solve_d2}[depth](P, S, idx, b, m, B) for b, m in configs]
-    rt = (time.perf_counter() - t0) / len(configs)
     n = S[:, 0].sum()
-    return [{"beta": b, "min_leaf": m, "depth": depth, "tree": tr, "train_total_cost": c, "train_mean_cost": c / n,
-             "runtime_s": rt, "status": "OPTIMAL (exhaustive DP over candidate splits)", "bound": c, "gap": 0.0}
-            for (b, m), (c, tr) in zip(configs, sols)]
+    lams = [c[2] if len(c) > 2 else leaf_penalty for c in configs]
+    internal = [(c[0], c[1], lam * n) for c, lam in zip(configs, lams)]
+    idx = np.arange(len(P))
+    info = {"complete": True}
+    if depth == 4:
+        deadline = None if time_limit is None else t0 + time_limit
+        sols, info = _solve_d4_multi(P, S, idx, B, internal, deadline, progress)
+    elif depth == 3:
+        sols = _solve_d3_multi(P, S, idx, B, internal)
+    elif depth == 0:
+        sols = [(float(_leaf(S.sum(0), b, m, pen)[0]), leaf_node(_leaf(S.sum(0), b, m)[1])) for b, m, pen in internal]
+    else:
+        sols = [{1: _solve_d1, 2: _solve_d2}[depth](P, S, idx, b, m, B, pen) for b, m, pen in internal]
+    rt = (time.perf_counter() - t0) / len(configs)
+    out = []
+    for (b, m, pen), lam, (c, tr) in zip(internal, lams, sols):
+        L = tree_leaves(tr)
+        cost = c - pen * L                       # unpenalized training cost (identical to c when lambda = 0)
+        status = ("OPTIMAL (exhaustive DP over candidate splits)" if info["complete"] else
+                  f"TIME_LIMIT: best of all depth<=3 trees and {info['evaluated']}/{info['root_candidates']} "
+                  "depth-4 root splits (not certified)")
+        out.append({"beta": b, "min_leaf": m, "depth": depth, "tree": tr, "train_total_cost": cost,
+                    "train_mean_cost": cost / n, "leaf_penalty": lam, "leaves": L, "penalized_objective_total": c,
+                    "penalized_objective_mean": c / n, "runtime_s": rt, "status": status,
+                    "bound": c if info["complete"] else np.nan, "gap": 0.0 if info["complete"] else np.nan}
+                   | ({k: v for k, v in info.items() if k != "complete"} if depth == 4 else {}))
+    return out
 
 
 def fit_greedy_tree(P, S, B, beta, depth, min_leaf):

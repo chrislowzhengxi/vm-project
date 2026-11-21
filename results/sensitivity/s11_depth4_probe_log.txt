@@ -1,0 +1,2 @@
+[  1701s] depth-4 b5_m0.05_bins32: OPTIMAL (exhaustive DP over candidate splits) (154/154 root splits, 1701s)
+exit=0

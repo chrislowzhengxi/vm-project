@@ -106,3 +106,25 @@ they need `data/processed/features.parquet` and `data/processed/final/policy_act
 | - | `src/iai_oct.jl` | Julia driver for `IAI.OptimalTreeClassifier` |
 
 Outputs: `results/hw6/`, `figures/hw6/`, `data/processed/hw6/`.
+
+---
+
+## β sensitivity and OPT complexity (stages 10-11)
+
+Findings: **[SENSITIVITY_FINDINGS.md](SENSITIVITY_FINDINGS.md)**. These read the finalized and HW6 outputs and never
+write them.
+
+```bash
+./run_sensitivity.sh              # tests + E1-E6 (~25 min; ~75 min the first time, E3 change-point paths dominate)
+./run_sensitivity.sh --reuse-e3   # reuse cached E3 / E6 paths
+./run_sensitivity.sh --depth4     # + exact depth-4 OPT (E7): 30-min probe, then three runs with a 75-min budget
+```
+
+| script | what it does |
+|---|---|
+| `src/sensitivity_lib.py` | fixed-policy cost lines, break-evens, lower envelopes, exact parametric change-point search |
+| `src/10_beta_sensitivity.py` | E1 fixed-policy sensitivity; E2 re-optimized 12-point β grid; E3 exact OPT change points; E4 wrong-β regret |
+| `src/11_opt_complexity.py` | E5 cost vs leaves; E6 exact leaf-penalty (λ) path; E7 exact depth-4 OPT runs and summary |
+
+`src/final_lib.solve_opt_exact` gained two backward-compatible options, a `leaf_penalty` (default 0) and exact
+`depth=4` with a `time_limit`. Defaults reproduce the earlier results bit for bit (see `tests/test_sensitivity.py`).

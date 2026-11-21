@@ -1,0 +1,9 @@
+min leaf %,split,reserved non-decreasing in beta,shortfall non-increasing in beta,segments,complete,solves,unresolved intervals
+1.0,train,True,True,121,True,241.0,0.0
+1.0,val,False,False,121,True,241.0,0.0
+1.0,test,False,False,121,True,241.0,0.0
+5.0,train,True,True,83,True,165.0,0.0
+5.0,val,False,False,83,True,165.0,0.0
+5.0,test,False,False,83,True,165.0,0.0
+1.0,train V(beta),concave: True,,121,True,,
+5.0,train V(beta),concave: True,,83,True,,

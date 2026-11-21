@@ -1,0 +1,27 @@
+{
+ "feature": "sub_hist_mean",
+ "threshold_le": 35.376861572265625,
+ "bin_t": 9,
+ "left": {
+  "feature": "sub_hist_mean",
+  "threshold_le": 21.07882308959961,
+  "bin_t": 4,
+  "left": {
+   "action": 0.25
+  },
+  "right": {
+   "action": 0.5
+  }
+ },
+ "right": {
+  "feature": "sub_hist_frac_le75",
+  "threshold_le": 0.6679669618606567,
+  "bin_t": 13,
+  "left": {
+   "action": 1.0
+  },
+  "right": {
+   "action": 0.75
+  }
+ }
+}

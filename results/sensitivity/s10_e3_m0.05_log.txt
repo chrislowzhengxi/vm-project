@@ -1,0 +1,2 @@
+[  1204s] E3 m=0.05: 83 segments, 165 solves, complete=True, 1201s, peak RSS 0.88 GB
+exit=0

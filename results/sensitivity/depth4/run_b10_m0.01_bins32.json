@@ -1,0 +1,201 @@
+{
+ "beta": 10.0,
+ "min_leaf_frac": 0.01,
+ "min_leaf": 17030,
+ "bins": 32,
+ "budget_min": 75.0,
+ "status": "OPTIMAL (exhaustive DP over candidate splits)",
+ "root_candidates": 164,
+ "evaluated": 164,
+ "runtime_s": 2179.6586077213287,
+ "peak_rss_GB": 0.7422027587890625,
+ "patterns": 46673,
+ "depth4": {
+  "train_cost": 0.8351642803780073,
+  "val_cost": 0.8728908879813349,
+  "test_cost": 0.8408559225921847,
+  "leaves": 15,
+  "depth": 4,
+  "tree": {
+   "feature": "sub_hist_frac_le75",
+   "threshold_le": 0.9355932474136353,
+   "bin_t": 21,
+   "left": {
+    "feature": "cores",
+    "threshold_le": 2.0,
+    "bin_t": 0,
+    "left": {
+     "feature": "sub_hist_frac_le75",
+     "threshold_le": 0.7481300830841064,
+     "bin_t": 15,
+     "left": {
+      "action": 1.0
+     },
+     "right": {
+      "feature": "memory_gb",
+      "threshold_le": 2.0,
+      "bin_t": 0,
+      "left": {
+       "action": 1.0
+      },
+      "right": {
+       "action": 0.75
+      }
+     }
+    },
+    "right": {
+     "feature": "sub_hist_frac_le50",
+     "threshold_le": 0.3837653398513794,
+     "bin_t": 12,
+     "left": {
+      "feature": "sub_hist_frac_le75",
+      "threshold_le": 0.6679669618606567,
+      "bin_t": 13,
+      "left": {
+       "action": 1.0
+      },
+      "right": {
+       "action": 0.75
+      }
+     },
+     "right": {
+      "feature": "sub_hist_frac_le75",
+      "threshold_le": 0.8575594425201416,
+      "bin_t": 19,
+      "left": {
+       "action": 1.0
+      },
+      "right": {
+       "action": 0.75
+      }
+     }
+    }
+   },
+   "right": {
+    "feature": "sub_hist_frac_le50",
+    "threshold_le": 0.891139805316925,
+    "bin_t": 25,
+    "left": {
+     "feature": "mem_per_core",
+     "threshold_le": 2.3333332538604736,
+     "bin_t": 2,
+     "left": {
+      "feature": "cores",
+      "threshold_le": 2.0,
+      "bin_t": 0,
+      "left": {
+       "action": 0.75
+      },
+      "right": {
+       "action": 0.5
+      }
+     },
+     "right": {
+      "feature": "dep_hist_mean",
+      "threshold_le": 31.918241500854492,
+      "bin_t": 9,
+      "left": {
+       "action": 0.5
+      },
+      "right": {
+       "action": 0.75
+      }
+     }
+    },
+    "right": {
+     "feature": "sub_hist_frac_le75",
+     "threshold_le": 0.9997020363807678,
+     "bin_t": 27,
+     "left": {
+      "feature": "sub_hist_mean",
+      "threshold_le": 21.07882308959961,
+      "bin_t": 4,
+      "left": {
+       "action": 0.25
+      },
+      "right": {
+       "action": 0.5
+      }
+     },
+     "right": {
+      "feature": "sub_hist_mean",
+      "threshold_le": 0.28622567653656006,
+      "bin_t": 3,
+      "left": {
+       "action": 0.25
+      },
+      "right": {
+       "action": 0.5
+      }
+     }
+    }
+   }
+  }
+ },
+ "depth3": {
+  "train_cost": 0.8407678415433243,
+  "val_cost": 0.8781852231273272,
+  "test_cost": 0.8467706704197788,
+  "leaves": 8,
+  "depth": 3,
+  "tree": {
+   "feature": "sub_hist_frac_le75",
+   "threshold_le": 0.9355932474136353,
+   "bin_t": 21,
+   "left": {
+    "feature": "cores",
+    "threshold_le": 2.0,
+    "bin_t": 0,
+    "left": {
+     "feature": "sub_hist_frac_le75",
+     "threshold_le": 0.7896729707717896,
+     "bin_t": 16,
+     "left": {
+      "action": 1.0
+     },
+     "right": {
+      "action": 0.75
+     }
+    },
+    "right": {
+     "feature": "sub_hist_frac_le75",
+     "threshold_le": 0.8320754766464233,
+     "bin_t": 18,
+     "left": {
+      "action": 1.0
+     },
+     "right": {
+      "action": 0.75
+     }
+    }
+   },
+   "right": {
+    "feature": "sub_hist_frac_le50",
+    "threshold_le": 0.891139805316925,
+    "bin_t": 25,
+    "left": {
+     "feature": "dep_hist_mean",
+     "threshold_le": 31.918241500854492,
+     "bin_t": 9,
+     "left": {
+      "action": 0.5
+     },
+     "right": {
+      "action": 0.75
+     }
+    },
+    "right": {
+     "feature": "dep_hist_mean",
+     "threshold_le": 16.734603881835938,
+     "bin_t": 4,
+     "left": {
+      "action": 0.25
+     },
+     "right": {
+      "action": 0.5
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,51 @@
+policy A (beta=5 version),policy B (beta=5 version),split,break-even beta,"in [1, 20]",cheaper above break-even
+OPT-exact [full],Greedy [full],validation,5.247998866225412,True,Greedy [full]
+OPT-exact [full],Greedy [full],test,5.838381123874977,True,Greedy [full]
+OPT-exact [full],Cost-aware RF,validation,-0.8407961389126615,False,Cost-aware RF
+OPT-exact [full],Cost-aware RF,test,-7.501414692565197,False,Cost-aware RF
+OPT-exact [full],CART-MSE (26 feat.) [full],validation,4.0637210762838745,True,OPT-exact [full]
+OPT-exact [full],CART-MSE (26 feat.) [full],test,3.317596230482283,True,OPT-exact [full]
+OPT-exact [full],H1: customer mean P95 + margin,validation,2.3440907085303766,True,OPT-exact [full]
+OPT-exact [full],H1: customer mean P95 + margin,test,2.420524352206137,True,OPT-exact [full]
+OPT-exact [full],RF predict + margin,validation,-6.052628330314451,False,RF predict + margin
+OPT-exact [full],RF predict + margin,test,1.7569601009093687,True,OPT-exact [full]
+OPT-exact [full],Always 100%,validation,16.962849673146355,True,Always 100%
+OPT-exact [full],Always 100%,test,20.411113573891665,False,Always 100%
+Greedy [full],Cost-aware RF,validation,-7.9740454103203975,False,Cost-aware RF
+Greedy [full],Cost-aware RF,test,45.816432976289406,False,Greedy [full]
+Greedy [full],CART-MSE (26 feat.) [full],validation,4.48168314112694,True,Greedy [full]
+Greedy [full],CART-MSE (26 feat.) [full],test,4.035083312416394,True,Greedy [full]
+Greedy [full],H1: customer mean P95 + margin,validation,3.338146889329911,True,Greedy [full]
+Greedy [full],H1: customer mean P95 + margin,test,3.450400485308887,True,Greedy [full]
+Greedy [full],RF predict + margin,validation,6.278039785714338,True,Greedy [full]
+Greedy [full],RF predict + margin,test,4.2485944570294025,True,Greedy [full]
+Greedy [full],Always 100%,validation,18.94588877417931,True,Always 100%
+Greedy [full],Always 100%,test,22.44111718488384,False,Always 100%
+Cost-aware RF,CART-MSE (26 feat.) [full],validation,1.5980793700844824,True,Cost-aware RF
+Cost-aware RF,CART-MSE (26 feat.) [full],test,0.8316117728219852,False,Cost-aware RF
+Cost-aware RF,H1: customer mean P95 + margin,validation,0.7802036492978738,False,Cost-aware RF
+Cost-aware RF,H1: customer mean P95 + margin,test,-0.003950189275557979,False,Cost-aware RF
+Cost-aware RF,RF predict + margin,validation,-0.5948306980410976,False,Cost-aware RF
+Cost-aware RF,RF predict + margin,test,-3.2449904059968477,False,Cost-aware RF
+Cost-aware RF,Always 100%,validation,23.492496495518413,False,Always 100%
+Cost-aware RF,Always 100%,test,23.228365023874566,False,Always 100%
+CART-MSE (26 feat.) [full],H1: customer mean P95 + margin,validation,-33.559831055396714,False,CART-MSE (26 feat.) [full]
+CART-MSE (26 feat.) [full],H1: customer mean P95 + margin,test,14.003920188570385,True,H1: customer mean P95 + margin
+CART-MSE (26 feat.) [full],RF predict + margin,validation,3.6228909365811117,True,RF predict + margin
+CART-MSE (26 feat.) [full],RF predict + margin,test,3.8485844062748447,True,RF predict + margin
+CART-MSE (26 feat.) [full],Always 100%,validation,14.257203232416549,True,Always 100%
+CART-MSE (26 feat.) [full],Always 100%,test,16.39297581923475,True,Always 100%
+H1: customer mean P95 + margin,RF predict + margin,validation,1.9942220677129552,True,RF predict + margin
+H1: customer mean P95 + margin,RF predict + margin,test,2.6724419211814703,True,RF predict + margin
+H1: customer mean P95 + margin,Always 100%,validation,13.781599486630643,True,Always 100%
+H1: customer mean P95 + margin,Always 100%,test,16.43727442583429,True,Always 100%
+RF predict + margin,Always 100%,validation,17.24459034864492,True,Always 100%
+RF predict + margin,Always 100%,test,19.061147379520857,True,Always 100%
+OPT-exact [full],Always 25%,validation,1.6975692444739923,True,OPT-exact [full]
+OPT-exact [full],Always 50%,validation,1.7934880366911572,True,OPT-exact [full]
+OPT-exact [full],Always 75%,validation,0.5293223896235216,False,OPT-exact [full]
+OPT-exact [full],Always 100%,validation,16.962849673146355,True,Always 100%
+OPT-exact [full],Always 25%,test,1.7793511706643772,True,OPT-exact [full]
+OPT-exact [full],Always 50%,test,1.774918287093479,True,OPT-exact [full]
+OPT-exact [full],Always 75%,test,-0.4518543177978739,False,OPT-exact [full]
+OPT-exact [full],Always 100%,test,20.411113573891665,False,Always 100%
