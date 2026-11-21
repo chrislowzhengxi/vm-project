@@ -1,0 +1,32 @@
+Set parameter Username
+Set parameter LicenseID to value 2857457
+Academic license - for non-commercial use only - expires 2027-08-26
+{'n': 1000, 'patterns': 425, 'depth': 2, 'min_leaf': 10, 'beta': 5, 'method': 'Gurobi MIO', 'objective': 0.8053007578121301, 'bound': 0.8053007578121301, 'gap': 0.0, 'status': 'OPTIMAL', 'runtime_s': 86.47097312496044, 'mio_vars': 9948, 'mio_constraints': 15311}
+{'n': 1000, 'patterns': 425, 'depth': 2, 'min_leaf': 10, 'beta': 5, 'method': 'Gurobi MIO (warm start = DP tree)', 'objective': 0.8053007578121301, 'bound': 0.8053007578121301, 'gap': 0.0, 'status': 'OPTIMAL', 'runtime_s': 108.39607462496497, 'mio_vars': 9948, 'mio_constraints': 15311}
+{'n': 1000, 'patterns': 425, 'depth': 3, 'min_leaf': 10, 'beta': 5, 'method': 'Gurobi MIO', 'objective': 0.79551446356461, 'bound': 0.6914099918072539, 'gap': 0.13086433562863922, 'status': 'TIME_LIMIT', 'runtime_s': 600.0305434172042, 'mio_vars': 20372, 'mio_constraints': 34023}
+{'n': 1000, 'patterns': 425, 'depth': 3, 'min_leaf': 10, 'beta': 5, 'method': 'Gurobi MIO (warm start = DP tree)', 'objective': 0.7947591572750368, 'bound': 0.6914099918072583, 'gap': 0.13003834497752523, 'status': 'TIME_LIMIT', 'runtime_s': 600.5806756250095, 'mio_vars': 20372, 'mio_constraints': 34023}
+{'n': 5000, 'patterns': 1027, 'depth': 2, 'min_leaf': 50, 'beta': 5, 'method': 'Gurobi MIO', 'objective': 0.8145315801816924, 'bound': 0.8145315801816924, 'gap': 0.0, 'status': 'OPTIMAL', 'runtime_s': 211.6409250420984, 'mio_vars': 23794, 'mio_constraints': 36983}
+{'n': 5000, 'patterns': 1027, 'depth': 2, 'min_leaf': 50, 'beta': 5, 'method': 'Gurobi MIO (warm start = DP tree)', 'objective': 0.8145315801816924, 'bound': 0.8145315801816924, 'gap': 0.0, 'status': 'OPTIMAL', 'runtime_s': 200.89398920792155, 'mio_vars': 23794, 'mio_constraints': 36983}
+{'n': 5000, 'patterns': 1027, 'depth': 3, 'min_leaf': 50, 'beta': 5, 'method': 'Gurobi MIO', 'objective': 0.8080537562776798, 'bound': 0.7440049221639435, 'gap': 0.07926308567486746, 'status': 'TIME_LIMIT', 'runtime_s': 600.0021716670599, 'mio_vars': 48666, 'mio_constraints': 82183}
+{'n': 5000, 'patterns': 1027, 'depth': 3, 'min_leaf': 50, 'beta': 5, 'method': 'Gurobi MIO (warm start = DP tree)', 'objective': 0.8044985755046202, 'bound': 0.7440049221639411, 'gap': 0.07519423300747864, 'status': 'TIME_LIMIT', 'runtime_s': 600.0187685829587, 'mio_vars': 48666, 'mio_constraints': 82183}
+       n  patterns  depth  min_leaf  beta                             method  objective     bound       gap                status   runtime_s  mio_vars  mio_constraints  objective minus exact
+0   1000       425      2        10     5                           exact DP   0.805301  0.805301  0.000000  OPTIMAL (exhaustive)    0.002641       NaN              NaN           0.000000e+00
+1   1000       425      2        10     5                             greedy   0.805847       NaN       NaN             heuristic    0.000849       NaN              NaN           5.467230e-04
+2   1000       425      2        10     5                         Gurobi MIO   0.805301  0.805301  0.000000               OPTIMAL   86.470973    9948.0          15311.0          -2.220446e-16
+3   1000       425      2        10     5  Gurobi MIO (warm start = DP tree)   0.805301  0.805301  0.000000               OPTIMAL  108.396075    9948.0          15311.0          -2.220446e-16
+4   1000       425      2        10     5             IAI OPT (local search)   0.805301       NaN       NaN        no certificate    3.806491       NaN              NaN           0.000000e+00
+5   1000       425      3        10     5                           exact DP   0.794759  0.794759  0.000000  OPTIMAL (exhaustive)    0.067091       NaN              NaN           0.000000e+00
+6   1000       425      3        10     5                             greedy   0.798658       NaN       NaN             heuristic    0.001755       NaN              NaN           3.898617e-03
+7   1000       425      3        10     5                         Gurobi MIO   0.795514  0.691410  0.130864            TIME_LIMIT  600.030543   20372.0          34023.0           7.553063e-04
+8   1000       425      3        10     5  Gurobi MIO (warm start = DP tree)   0.794759  0.691410  0.130038            TIME_LIMIT  600.580676   20372.0          34023.0          -1.110223e-16
+9   1000       425      3        10     5             IAI OPT (local search)   0.795514       NaN       NaN        no certificate    3.916485       NaN              NaN           7.553063e-04
+10  5000      1027      2        50     5                           exact DP   0.814532  0.814532  0.000000  OPTIMAL (exhaustive)    0.003576       NaN              NaN           0.000000e+00
+11  5000      1027      2        50     5                             greedy   0.815079       NaN       NaN             heuristic    0.001089       NaN              NaN           5.470611e-04
+12  5000      1027      2        50     5                         Gurobi MIO   0.814532  0.814532  0.000000               OPTIMAL  211.640925   23794.0          36983.0           0.000000e+00
+13  5000      1027      2        50     5  Gurobi MIO (warm start = DP tree)   0.814532  0.814532  0.000000               OPTIMAL  200.893989   23794.0          36983.0           0.000000e+00
+14  5000      1027      2        50     5             IAI OPT (local search)   0.814532       NaN       NaN        no certificate    3.849927       NaN              NaN          -1.110223e-16
+15  5000      1027      3        50     5                           exact DP   0.804499  0.804499  0.000000  OPTIMAL (exhaustive)    0.072109       NaN              NaN           0.000000e+00
+16  5000      1027      3        50     5                             greedy   0.808554       NaN       NaN             heuristic    0.002092       NaN              NaN           4.054973e-03
+17  5000      1027      3        50     5                         Gurobi MIO   0.808054  0.744005  0.079263            TIME_LIMIT  600.002172   48666.0          82183.0           3.555181e-03
+18  5000      1027      3        50     5  Gurobi MIO (warm start = DP tree)   0.804499  0.744005  0.075194            TIME_LIMIT  600.018769   48666.0          82183.0           0.000000e+00
+19  5000      1027      3        50     5             IAI OPT (local search)   0.804499       NaN       NaN        no certificate    3.998988       NaN              NaN           0.000000e+00

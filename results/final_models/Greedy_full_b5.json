@@ -1,0 +1,35 @@
+{
+ "feature": "sub_hist_frac_le75",
+ "threshold_le": 0.8575594425201416,
+ "bin_t": 19,
+ "left": {
+  "feature": "sub_hist_frac_le75",
+  "threshold_le": 0.6679669618606567,
+  "bin_t": 13,
+  "left": {
+   "action": 1.0
+  },
+  "right": {
+   "action": 0.75
+  }
+ },
+ "right": {
+  "feature": "sub_hist_mean",
+  "threshold_le": 21.07882308959961,
+  "bin_t": 4,
+  "left": {
+   "action": 0.25
+  },
+  "right": {
+   "feature": "dep_hist_mean",
+   "threshold_le": 38.57790756225586,
+   "bin_t": 11,
+   "left": {
+    "action": 0.5
+   },
+   "right": {
+    "action": 0.75
+   }
+  }
+ }
+}

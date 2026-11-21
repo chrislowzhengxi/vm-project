@@ -1,0 +1,22 @@
+if sub_hist_frac_le50 <= 0.7004:
+    if sub_hist_mean <= 31.2:
+        if memory_gb <= 4:
+            reserve 100%
+        else:  # memory_gb > 4
+            reserve 50%
+    else:  # sub_hist_mean > 31.2
+        if sub_hist_frac_le75 <= 0.7897:
+            reserve 100%
+        else:  # sub_hist_frac_le75 > 0.7897
+            reserve 75%
+else:  # sub_hist_frac_le50 > 0.7004
+    if sub_hist_mean <= 21.08:
+        if dep_hist_mean <= 16.73:
+            reserve 25%
+        else:  # dep_hist_mean > 16.73
+            reserve 50%
+    else:  # sub_hist_mean > 21.08
+        if sub_hist_frac_le75 <= 0.9749:
+            reserve 75%
+        else:  # sub_hist_frac_le75 > 0.9749
+            reserve 50%

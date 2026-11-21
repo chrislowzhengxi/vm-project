@@ -1,0 +1,57 @@
+[     5s] k-means with time K=3: 1s, silhouette 0.227, val cost b=5 0.8643
+[    10s] k-means with time K=5: 2s, silhouette 0.241, val cost b=5 0.8583
+[    15s] k-means with time K=8: 4s, silhouette 0.216, val cost b=5 0.8779
+[    21s] k-means with time K=10: 4s, silhouette 0.216, val cost b=5 0.8506
+[    24s] k-means no time K=3: 1s, silhouette 0.325, val cost b=5 0.8633
+[    27s] k-means no time K=5: 1s, silhouette 0.374, val cost b=5 0.8580
+[    31s] k-means no time K=8: 2s, silhouette 0.392, val cost b=5 0.8489
+[    36s] k-means no time K=10: 3s, silhouette 0.392, val cost b=5 0.8518
+[    36s] selected on validation (beta=5): no time, K=8
+[    37s] OCT fits done
+[    38s] selected OCT (IAI) depth 4 (by val cost); depth by val agreement = 4
+[    39s] tables + bootstrap done
+     variant   K  inertia per VM (train)  silhouette (20k)     fit_s  smallest cluster share %  val cost b=2  test cost b=2  distinct actions b=2  val cost b=5  test cost b=5  distinct actions b=5  val cost b=10  test cost b=10  distinct actions b=10
+0  with time   3                5.520985          0.227131  1.393387                 24.934293      0.755357       0.707821                     3      0.864321       0.823753                     3       0.933838        0.916760                      2
+1  with time   5                4.276692          0.241425  2.132176                 11.897159      0.758041       0.712833                     3      0.858331       0.821176                     3       0.931804        0.897343                      3
+2  with time   8                3.542834          0.216153  3.506504                  7.176252      0.757636       0.705862                     4      0.877931       0.813942                     4       0.916698        0.866025                      3
+3  with time  10                3.231807          0.216121  3.908911                  5.655248      0.744681       0.703393                     4      0.850594       0.804725                     4       0.897278        0.859125                      4
+4    no time   3                3.523163          0.325480  0.822865                 24.868293      0.755205       0.707935                     3      0.863255       0.822646                     3       0.934102        0.916222                      2
+5    no time   5                2.286178          0.373988  1.474361                 11.906319      0.757799       0.712924                     3      0.858021       0.821531                     3       0.931469        0.897684                      3
+6    no time   8                1.590382          0.392235  2.053340                  7.241958      0.746746       0.702995                     4      0.848948       0.803450                     4       0.901689        0.869523                      4
+7    no time  10                1.350520          0.391933  3.383897                  6.140386      0.747021       0.703609                     4      0.851758       0.806447                     4       0.897735        0.860472                      4
+            method  max depth  depth  leaves  train-sample agreement %  val agreement %  test agreement %      fit_s  val cost b=2  test cost b=2  val cost b=5  test cost b=5  val cost b=10  test cost b=10  clusters reachable
+0        OCT (IAI)          2      2       4                   64.6620        62.733560         61.600905   5.617082      0.755176       0.707083      0.857595       0.815134       0.918110        0.891413                   4
+1        OCT (IAI)          3      3       8                   92.4000        86.841751         86.143480  17.254081      0.751106       0.705774      0.856466       0.808368       0.910239        0.872026                   8
+2        OCT (IAI)          4      4      15                   95.4925        89.035883         88.857808  24.552716      0.753350       0.700523      0.851469       0.804923       0.901153        0.869315                   8
+3  CART classifier          2      2       4                   63.9210        59.917207         59.780811   0.155737      0.751931       0.705258      0.857544       0.813591       0.914668        0.887105                   4
+4  CART classifier          3      3       8                   79.8305        75.418964         74.489160   0.213693      0.754449       0.707033      0.857754       0.809506       0.932623        0.890105                   6
+5  CART classifier          4      4      14                   91.8000        91.226017         90.771379   0.272495      0.750783       0.704901      0.852513       0.803430       0.898448        0.859592                   8
+    beta                                        policy  test cost  % reduction vs best fixed  % of gap closed  avg reserved  % under-provisioned  mean shortfall  mean unused   % at 25%   % at 50%   % at 75%   % at 100%
+8      5                    k-means clusters -> action   0.803450                  19.655022        47.822994      0.728882             9.861402        0.014913     0.279616  16.664792  12.996959  32.458779   37.879469
+9      5        OCT (IAI) depth 4 -> cluster -> action   0.804923                  19.507698        47.464536      0.739740             9.092272        0.013037     0.288597  16.133688   8.694236  38.314521   36.857555
+10     5  CART classifier depth 4 -> cluster -> action   0.803430                  19.656986        47.827771      0.735724             9.431973        0.013541     0.285086  16.057079  11.652915  34.233189   38.056817
+11     5                   Best fixed (val) (existing)   1.000000                   0.000000         0.000000      1.000000             0.000000        0.000000     0.535821   0.000000   0.000000   0.000000  100.000000
+12     5                 Greedy policy tree (existing)   0.800356                  19.964359        48.575646      0.743123             8.123304        0.011447     0.290390  16.328840  10.659348  32.445660   40.566153
+13     5                          OPT-exact (existing)   0.799020                  20.098042        48.900914      0.733813             9.253689        0.013041     0.282675  16.317360  11.706330  34.109960   37.866350
+14     5                      Cost-aware RF (existing)   0.784073                  21.592711        52.537620      0.724845             9.115231        0.011846     0.272511  16.770451  13.957727  31.835369   37.436452
+15     5                 Oracle (hindsight) (existing)   0.589005                  41.099523       100.000000      0.576661             9.940119        0.002469     0.114950  39.546113  16.955530  16.786148   26.712210
+    beta                                       A                            B    cost A    cost B     A - B  95% CI low  95% CI high     % of B
+0      2              k-means clusters -> action  Best fixed (val) (existing)  0.702995  0.789546 -0.086551   -0.109588    -0.062864 -10.962084
+1      2              k-means clusters -> action         OPT-exact (existing)  0.702995  0.698516  0.004480   -0.003304     0.012899   0.641347
+2      2  OCT (IAI) depth 4 -> cluster -> action  Best fixed (val) (existing)  0.700523  0.789546 -0.089023   -0.110196    -0.066681 -11.275182
+3      2  OCT (IAI) depth 4 -> cluster -> action         OPT-exact (existing)  0.700523  0.698516  0.002008   -0.004763     0.009625   0.287445
+4      2  OCT (IAI) depth 4 -> cluster -> action   k-means clusters -> action  0.700523  0.702995 -0.002472   -0.006549     0.001274  -0.351646
+5      2  OCT (IAI) depth 4 -> cluster -> action     Cost-aware RF (existing)  0.700523  0.687341  0.013183    0.008452     0.019291   1.917907
+6      5              k-means clusters -> action  Best fixed (val) (existing)  0.803450  1.000000 -0.196550   -0.261894    -0.137197 -19.655022
+7      5              k-means clusters -> action         OPT-exact (existing)  0.803450  0.799020  0.004430   -0.004714     0.014037   0.554454
+8      5  OCT (IAI) depth 4 -> cluster -> action  Best fixed (val) (existing)  0.804923  1.000000 -0.195077   -0.260809    -0.135755 -19.507698
+9      5  OCT (IAI) depth 4 -> cluster -> action         OPT-exact (existing)  0.804923  0.799020  0.005903   -0.000689     0.012666   0.738836
+10     5  OCT (IAI) depth 4 -> cluster -> action   k-means clusters -> action  0.804923  0.803450  0.001473   -0.006652     0.010468   0.183365
+11     5  OCT (IAI) depth 4 -> cluster -> action     Cost-aware RF (existing)  0.804923  0.784073  0.020850    0.012563     0.030365   2.659209
+12    10              k-means clusters -> action  Best fixed (val) (existing)  0.869523  1.000000 -0.130477   -0.197661    -0.074937 -13.047712
+13    10              k-means clusters -> action         OPT-exact (existing)  0.869523  0.846771  0.022752    0.010272     0.036534   2.686939
+14    10  OCT (IAI) depth 4 -> cluster -> action  Best fixed (val) (existing)  0.869315  1.000000 -0.130685   -0.200283    -0.075481 -13.068512
+15    10  OCT (IAI) depth 4 -> cluster -> action         OPT-exact (existing)  0.869315  0.846771  0.022544    0.007059     0.039167   2.662375
+16    10  OCT (IAI) depth 4 -> cluster -> action   k-means clusters -> action  0.869315  0.869523 -0.000208   -0.013045     0.013445  -0.023922
+17    10  OCT (IAI) depth 4 -> cluster -> action     Cost-aware RF (existing)  0.869315  0.832633  0.036682    0.021565     0.052879   4.405490
+[    39s] Stage 9 done

@@ -1,0 +1,27 @@
+feature,label,val cost increase when permuted (beta=5),selected for trees
+sub_hist_mean,subscription mean past P95 (%),0.0448320890032981,True
+sub_hist_median,subscription median past P95 (%),0.026467923279036187,True
+sub_hist_frac_le75,share of past VMs with P95 <= 75%,0.02492599313761068,True
+cores,vCPU bucket,0.023024555321279505,True
+sub_hist_frac_le50,share of past VMs with P95 <= 50%,0.011184870699142813,True
+memory_gb,memory bucket (GB),0.009446839768514959,True
+mem_per_core,GB per vCPU,0.007666695620911379,True
+dep_hist_mean,deployment mean past P95 (%),0.00620089855105832,True
+sub_hist_std,subscription SD of past P95,0.004789558095441349,False
+dep_hist_median,deployment median past P95 (%),0.004682625588963318,False
+dep_batch_size,VMs requested in same deployment slot,0.003917818860996736,False
+sub_hist_frac_le25,share of past VMs with P95 <= 25%,0.0037418539489003644,False
+sub_hist_last5_mean,mean P95 of last 5 completed VMs (%),0.0032814702668368945,False
+hour,creation hour,0.002877131102371977,False
+dep_n_prior_created,# earlier VMs (deployment),0.0022763018246182987,False
+dep_n_hist,# completed earlier VMs (deployment),0.002042771283578604,False
+sub_n_hist,# completed earlier VMs (subscription),0.001954880309915197,False
+sub_n_prior_created,# earlier VMs (subscription),0.001814432600330984,False
+sub_hist_last,last completed VM's P95 (%),0.0009512152632342175,False
+dep_hist_last,deployment last completed P95 (%),0.0005684673000769247,False
+sub_age_days,subscription age (days),5.457055779878317e-05,False
+sub_preexisting,subscription active at trace start,4.384295150644535e-05,False
+dep_cold,no completed deployment history,2.672525043478924e-05,False
+sub_cold,no completed subscription history,7.500000000049134e-06,False
+day_in_trace,day in trace,0.0,False
+dow,creation weekday,-9.869946802842922e-05,False

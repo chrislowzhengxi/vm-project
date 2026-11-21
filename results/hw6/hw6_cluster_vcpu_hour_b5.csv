@@ -1,0 +1,8 @@
+policy,vCPU-hour-weighted cost,% reduction vs weighted best fixed
+k-means clusters -> action,0.8327936477841874,16.720635221581258
+OCT (IAI) depth 4 -> cluster -> action,0.8292332758051405,17.07667241948595
+CART classifier depth 4 -> cluster -> action,0.8449200578037298,15.507994219627019
+Best fixed (val) (existing),1.0,0.0
+Greedy policy tree (existing),0.8208448372447306,17.915516275526944
+OPT-exact (existing),0.8238366153492479,17.61633846507521
+Cost-aware RF (existing),0.8066629722564556,19.333702774354443

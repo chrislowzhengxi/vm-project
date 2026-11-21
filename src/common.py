@@ -65,8 +65,8 @@ def load_features():
     return pd.read_parquet(PROC / "features.parquet")
 
 
-def impute(F):
-    """Fill missing history statistics using TRAINING rows only.
+def impute(F, train_mask=None):
+    """Fill missing history statistics using TRAINING rows only (train_mask overrides split == "train").
 
     * Subscription stats with no completed history -> training-set statistic of the target
       (mean / median / last -> mean p95; std -> median observed std; frac_le* -> training share below threshold).
@@ -75,7 +75,7 @@ def impute(F):
     The *_cold indicator columns keep the information that a value was imputed.
     """
     F = F.copy()
-    tr = F.split == "train"
+    tr = F.split == "train" if train_mask is None else train_mask
     ytr = F.loc[tr, "y_p95"]
     fill = {"mean": ytr.mean(), "median": ytr.median(), "last": ytr.mean(), "last5_mean": ytr.mean(),
             "std": F.loc[tr, "sub_hist_std"].median(),

@@ -1,0 +1,22 @@
+if sub_hist_median <= 56.88:
+    if sub_hist_mean <= 35.38:
+        if sub_hist_mean <= 21.08:
+            reserve 25%
+        else:  # sub_hist_mean > 21.08
+            reserve 50%
+    else:  # sub_hist_mean > 35.38
+        if sub_hist_frac_le75 <= 0.8107:
+            reserve 75%
+        else:  # sub_hist_frac_le75 > 0.8107
+            reserve 75%
+else:  # sub_hist_median > 56.88
+    if sub_hist_median <= 78.04:
+        if dep_hist_mean <= 66.85:
+            reserve 75%
+        else:  # dep_hist_mean > 66.85
+            reserve 100%
+    else:  # sub_hist_median > 78.04
+        if dep_hist_mean <= 77.14:
+            reserve 100%
+        else:  # dep_hist_mean > 77.14
+            reserve 100%

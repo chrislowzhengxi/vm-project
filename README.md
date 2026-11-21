@@ -57,3 +57,52 @@ Or run the stages one at a time (each reads the previous stage's output from `da
 * A previous VM's `p95maxcpu` only enters a history feature once that VM has been **deleted** before the current VM
   is created (`vmdeleted < vmcreated`, strict), because P95 summarizes the whole lifetime.
 * Train = days 0-20, validation = days 21-24, test = days 25-29 (by `vmcreated`); imputation values come from training rows only.
+
+---
+
+## Final project: Optimal Policy Trees (stages 5-7)
+
+Findings: **[FINAL_FINDINGS.md](FINAL_FINDINGS.md)**. The feasibility study above (stages 1-4, `REPORT.md`) is
+unchanged; the final stages reuse `data/processed/features.parquet` and write `results/final_*`, `figures/final_*`,
+`results/final_models/` and `data/processed/final/`.
+
+```bash
+./run_final.sh          # tests + stages 5, 5b, 6, 7 (~40 min on a 10-core laptop); PYTHON=... to pick Python
+python -m pytest -q tests/
+```
+
+| stage | script | what it does |
+|---|---|---|
+| lib | `src/final_lib.py` | costs, oracle, evaluation, binning, exact DP policy trees, greedy cost tree, Gurobi MIO, IAI bridge, cluster bootstrap |
+| lib | `src/final_setup.py` | strict label-available train/val masks, training-only imputation, sampling, evaluation weights |
+| 5 | `src/05_opt_policy_trees.py` | cost-aware RF + validation feature selection; CART-MSE / greedy / OPT-exact / OPT-IAI grids; validation selection |
+| 5b | `src/05b_mio_crosscheck.py` | Gurobi MIO vs. exact DP vs. IAI on subsamples (objective, bound, gap, runtime) |
+| 6 | `src/06_final_evaluation.py` | all benchmarks (fixed, heuristics, predict-then-decide, cost-aware RF, trees, oracle); weighted results; figs 1, 3, 4 |
+| 7 | `src/07_robustness.py` | cluster bootstrap, segments, feature ablation, sample-size/seed stability, strict vs. feasibility setup, censoring; figs 2, 5, 6 |
+| - | `src/iai_opt.jl` | Julia driver for `IAI.OptimalTreePolicyMinimizer` |
+
+Optional solvers:
+* **Gurobi** (`pip install gurobipy` + license) for stage 5b and one test.
+* **Interpretable AI** (academic license at `~/iai.lic`; system image for Julia 1.11.9 at
+  `~/Library/Application Support/InterpretableAI/sysimage/v3.2.2/sys.dylib`, overridable with `IAI_SYSIMAGE` /
+  `IAI_JULIA`). Without it, OPT-IAI rows are skipped; the exact DP needs only numpy.
+
+---
+
+## Homework 6 refinements (stages 8-9)
+
+Findings: **[HW6_FINDINGS.md](HW6_FINDINGS.md)**. These extensions read the finalized outputs and never write them;
+they need `data/processed/features.parquet` and `data/processed/final/policy_actions_*.parquet`.
+
+```bash
+./run_hw6.sh            # tests/test_hw6.py + stages 8 and 9 (~5 min)
+```
+
+| stage | script | what it does |
+|---|---|---|
+| lib | `src/hw6_lib.py` | forest leaf tables and weighted expected costs, cluster-to-action mapping, OCT bridge, threshold trees |
+| 8 | `src/08_hw6_weighted_prescriptions.py` | P95 forest: point prediction vs. safety margin vs. forest-weighted prescription (Ch. 13) |
+| 9 | `src/09_hw6_clustering.py` | k-means clusters → cheapest tier per cluster; IAI OCT interpretation of the clusters (Ch. 20) |
+| - | `src/iai_oct.jl` | Julia driver for `IAI.OptimalTreeClassifier` |
+
+Outputs: `results/hw6/`, `figures/hw6/`, `data/processed/hw6/`.

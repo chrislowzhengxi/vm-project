@@ -1,0 +1,59 @@
+{
+ "feature": "sub_hist_frac_le50",
+ "threshold_le": 0.7003778219223022,
+ "bin_t": 22,
+ "left": {
+  "feature": "sub_hist_mean",
+  "threshold_le": 31.196640014648438,
+  "bin_t": 8,
+  "left": {
+   "feature": "memory_gb",
+   "threshold_le": 4.0,
+   "bin_t": 1,
+   "left": {
+    "action": 1.0
+   },
+   "right": {
+    "action": 0.5
+   }
+  },
+  "right": {
+   "feature": "sub_hist_frac_le75",
+   "threshold_le": 0.7896729707717896,
+   "bin_t": 16,
+   "left": {
+    "action": 1.0
+   },
+   "right": {
+    "action": 0.75
+   }
+  }
+ },
+ "right": {
+  "feature": "sub_hist_mean",
+  "threshold_le": 21.07882308959961,
+  "bin_t": 4,
+  "left": {
+   "feature": "dep_hist_mean",
+   "threshold_le": 16.734603881835938,
+   "bin_t": 4,
+   "left": {
+    "action": 0.25
+   },
+   "right": {
+    "action": 0.5
+   }
+  },
+  "right": {
+   "feature": "sub_hist_frac_le75",
+   "threshold_le": 0.9749496579170227,
+   "bin_t": 23,
+   "left": {
+    "action": 0.75
+   },
+   "right": {
+    "action": 0.5
+   }
+  }
+ }
+}

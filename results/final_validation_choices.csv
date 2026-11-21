@@ -1,0 +1,13 @@
+policy,beta,chosen on val
+H1 customer mean + margin,2,delta = -10.0 pts
+H1 customer mean + margin,5,delta = +15.0 pts
+H1 customer mean + margin,10,delta = +22.5 pts
+Ridge + margin,2,delta = -7.5 pts
+Ridge + margin,5,delta = +12.5 pts
+Ridge + margin,10,delta = +22.5 pts
+CART + margin,2,delta = -7.5 pts
+CART + margin,5,delta = +12.5 pts
+CART + margin,10,delta = +17.5 pts
+RF + margin,2,delta = -5.0 pts
+RF + margin,5,delta = +15.0 pts
+RF + margin,10,delta = +22.5 pts

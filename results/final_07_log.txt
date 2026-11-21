@@ -1,0 +1,47 @@
+[     2s] bootstrap done
+[     3s] segments done
+[    53s] ablation A: size + time (7) done
+[   144s] ablation B: A + subscription history (top 8) done
+[   242s] ablation C: B + deployment history (top 8, main) done
+[   344s] setup strict (labels available by cutoff) done
+[   446s] setup feasibility (all labels, incl. future-completed) done
+[   446s] censoring sensitivity done
+[   505s] stability n=10,000 done
+[   570s] stability n=50,000 done
+[   674s] stability n=200,000 done
+[   680s] stability n=1,703,020 done
+    beta                          policy A                        policy B    cost A    cost B     A - B  95% CI low  95% CI high     % of B  share of reps A<B
+20     5                  OPT-exact [full]                Best fixed (val)  0.799020  1.000000 -0.200980   -0.268974    -0.141240 -20.098042              1.000
+21     5                  OPT-exact [full]                   Greedy [full]  0.799020  0.800356 -0.001337   -0.005414     0.002742  -0.167030              0.753
+22     5                  OPT-exact [full]                 CART-MSE [full]  0.799020  0.804128 -0.005108   -0.011026     0.000308  -0.635273              0.964
+23     5                  OPT-exact [full]      CART-MSE (26 feat.) [full]  0.799020  0.805762 -0.006742   -0.012613    -0.001707  -0.836785              0.995
+24     5                  OPT-exact [full]                   Cost-aware RF  0.799020  0.784073  0.014947    0.006913     0.023844   1.906288              0.000
+25     5                  OPT-exact [full]  H1: customer mean P95 + margin  0.799020  0.808557 -0.009537   -0.016326    -0.004121  -1.179516              1.000
+26     5                     Greedy [full]                Best fixed (val)  0.800356  1.000000 -0.199644   -0.266471    -0.139233 -19.964359              1.000
+27     5                     Cost-aware RF                Best fixed (val)  0.784073  1.000000 -0.215927   -0.281419    -0.154090 -21.592711              1.000
+28     5                  OPT-exact [200k]                   Greedy [200k]  0.799020  0.795488  0.003532   -0.002523     0.010715   0.443956              0.139
+29     5                  OPT-exact [200k]                  OPT-IAI [200k]  0.799020  0.795654  0.003365   -0.000428     0.010042   0.422974              0.067
+30     5                    OPT-IAI [200k]                   Greedy [200k]  0.795654  0.795488  0.000166   -0.004106     0.004204   0.020893              0.459
+31     5                   CART-MSE [full]                Best fixed (val)  0.804128  1.000000 -0.195872   -0.264513    -0.136948 -19.587202              1.000
+32     5        CART-MSE (26 feat.) [full]                Best fixed (val)  0.805762  1.000000 -0.194238   -0.262296    -0.134818 -19.423793              1.000
+33     5               RF predict + margin                Best fixed (val)  0.802319  1.000000 -0.197681   -0.264525    -0.138824 -19.768096              1.000
+34     5    H1: customer mean P95 + margin                Best fixed (val)  0.808557  1.000000 -0.191443   -0.259231    -0.132434 -19.144337              1.000
+35     5  H2: customer critical-ratio rule                Best fixed (val)  0.819194  1.000000 -0.180806   -0.247962    -0.120812 -18.080617              1.000
+36     5                  OPT-exact [200k]                Best fixed (val)  0.799020  1.000000 -0.200980   -0.268974    -0.141240 -20.098042              1.000
+37     5                    OPT-IAI [200k]                Best fixed (val)  0.795654  1.000000 -0.204346   -0.270742    -0.143113 -20.434583              1.000
+38     5                     Greedy [200k]                Best fixed (val)  0.795488  1.000000 -0.204512   -0.271041    -0.143716 -20.451204              1.000
+39     5                   CART-MSE [200k]                Best fixed (val)  0.804128  1.000000 -0.195872   -0.264513    -0.136948 -19.587202              1.000
+                   runs  train_cost  test_cost_mean  test_cost_sd  test_cost_min  test_cost_max  runtime_s  distinct_trees                                            root_features  agreement_with_full_OPT
+method    n                                                                                                                                                                                                 
+Greedy    10000       5    0.806529        0.801483      0.000806       0.800356       0.802223   0.004097               4                                       sub_hist_frac_le75                86.772888
+          50000       5    0.805353        0.801144      0.001061       0.799905       0.802223   0.008489               4                                       sub_hist_frac_le75                89.127976
+          200000      5    0.805474        0.800460      0.000232       0.800356       0.800875   0.014458               2                                       sub_hist_frac_le75                90.613523
+          1703020     1    0.805431        0.800356           NaN       0.800356       0.800356   0.028122               1                                       sub_hist_frac_le75                90.460494
+OPT-IAI   10000       5    0.803839        0.799076      0.002180       0.797521       0.802856   4.730333               5                      sub_hist_frac_le75, sub_hist_median                87.685723
+          50000       5    0.803127        0.799277      0.001176       0.797609       0.800360   6.149844               5  sub_hist_frac_le50, sub_hist_frac_le75, sub_hist_median                90.399723
+          200000      5    0.802905        0.798765      0.002158       0.796567       0.801690  13.967845               5  sub_hist_frac_le50, sub_hist_frac_le75, sub_hist_median                91.062022
+OPT-exact 10000       5    0.802702        0.799721      0.002015       0.797985       0.802020   4.854623               5                        sub_hist_frac_le75, sub_hist_mean                91.796760
+          50000       5    0.801808        0.799065      0.001670       0.796713       0.801427   5.231428               5                                       sub_hist_frac_le75                95.910891
+          200000      5    0.801601        0.799020      0.000000       0.799020       0.799020   5.028676               1                                       sub_hist_frac_le75               100.000000
+          1703020     1    0.801580        0.799020           NaN       0.799020       0.799020   5.402418               1                                       sub_hist_frac_le75               100.000000
+[   680s] Stage 7 done

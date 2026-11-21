@@ -1,0 +1,11 @@
+policy,vCPU-hour-weighted cost,% reduction vs weighted best fixed
+A: point prediction -> tier [val-selected forest],0.8675915062888052,13.240849371119479
+B: point prediction + margin [val-selected forest],0.8286466243970161,17.135337560298392
+C: forest-weighted prescription [val-selected forest],0.8027300912334793,19.726990876652074
+"A: point prediction -> tier [main forest, msl=50]",0.8559877737294019,14.401222627059806
+"B: point prediction + margin [main forest, msl=50]",0.8298661104718498,17.013388952815024
+"C: forest-weighted prescription [main forest, msl=50]",0.8027300912334793,19.726990876652074
+Best fixed (val) (existing),1.0,0.0
+Greedy policy tree (existing),0.8208448372447306,17.915516275526944
+OPT-exact (existing),0.8238366153492479,17.61633846507521
+Cost-aware RF (existing),0.8066629722564556,19.333702774354443

@@ -1,0 +1,56 @@
+[      1s] strict rows: train 1,703,020  val 275,143  test 426,846
+[     37s] cost-aware RF fitted
+[     44s] selected features: ['sub_hist_mean', 'sub_hist_median', 'sub_hist_frac_le75', 'cores', 'sub_hist_frac_le50', 'memory_gb', 'mem_per_core', 'dep_hist_mean']
+[     44s] bins per feature: {'sub_hist_mean': 32, 'sub_hist_median': 32, 'sub_hist_frac_le75': 30, 'cores': 5, 'sub_hist_frac_le50': 31, 'memory_gb': 6, 'mem_per_core': 7, 'dep_hist_mean': 32}
+[     44s] [full] n=1,703,020, unique patterns=46,673
+[     45s] [full] OPT-exact depth 1 done
+[     46s] [full] OPT-exact depth 2 done
+[    109s] [full] OPT-exact depth 3 done
+[    111s] [full] greedy done
+[    137s] [full] CART-MSE done
+[    137s] [200k] n=200,000, unique patterns=23,599
+[    137s] [200k] OPT-exact depth 1 done
+[    138s] [200k] OPT-exact depth 2 done
+[    192s] [200k] OPT-exact depth 3 done
+[    194s] [200k] greedy done
+[    196s] [200k] CART-MSE done
+[    212s] feasibility CART done
+[    398s] OPT-IAI beta=2 done
+[    565s] OPT-IAI beta=5 done
+[    707s] OPT-IAI beta=10 done
+                                 max_depth  min_leaf_frac  leaves  train_cost  val_cost  test_cost
+policy                     beta                                                                   
+OPT-exact [full]           2             3          0.010       8    0.711347  0.740669   0.698516
+                           5             3          0.050       8    0.801580  0.839620   0.799020
+                           10            3          0.010       8    0.840768  0.878185   0.846771
+Greedy [full]              2             3          0.005       8    0.713870  0.740777   0.699737
+                           5             3          0.050       5    0.805431  0.840101   0.800356
+                           10            3          0.020       6    0.844661  0.881133   0.852445
+CART-MSE [full]            2             3          0.001       8    0.715239  0.745981   0.698316
+                           5             3          0.001       8    0.810095  0.844735   0.804128
+                           10            3          0.001       8    0.859448  0.883973   0.854092
+OPT-exact [200k]           2             3          0.010       8    0.710567  0.740669   0.698516
+                           5             3          0.050       8    0.800559  0.839620   0.799020
+                           10            3          0.050       7    0.840791  0.878285   0.847755
+Greedy [200k]              2             3          0.005       8    0.713049  0.741222   0.699947
+                           5             3          0.005       7    0.802732  0.840712   0.795488
+                           10            3          0.001       6    0.842250  0.882112   0.850308
+CART-MSE [200k]            2             3          0.001       8    0.713852  0.748153   0.701193
+                           5             3          0.001       8    0.808656  0.844735   0.804128
+                           10            3          0.001       8    0.857853  0.884094   0.854450
+CART-MSE (26 feat.) [full] 2             3            NaN       8    0.713918  0.743034   0.698195
+                           5             3            NaN       8    0.808075  0.842952   0.805762
+                           10            3            NaN       8    0.864262  0.893416   0.867344
+OPT-IAI [200k]             2             3          0.020       8    0.710885  0.740729   0.698734
+                           5             3          0.001       8    0.800302  0.840240   0.795654
+                           10            3          0.001       8    0.839727  0.874900   0.846420
+Greedy depth-4 [full]      2             4          0.001      15    0.711244  0.740941   0.697067
+                           5             4          0.001      13    0.801769  0.838326   0.794385
+                           10            4          0.010       9    0.841403  0.878075   0.849378
+Greedy depth-4 [200k]      2             4          0.010       9    0.710995  0.738882   0.697495
+                           5             4          0.001      13    0.800253  0.837614   0.794151
+                           10            4          0.010       9    0.840263  0.878014   0.849485
+OPT-IAI depth-4 [200k]     2             4          0.005      14    0.708196  0.734823   0.693080
+                           5             4          0.001      15    0.796275  0.833503   0.797373
+                           10            4          0.010      10    0.836387  0.873787   0.841855
+[    707s] Stage 5 done

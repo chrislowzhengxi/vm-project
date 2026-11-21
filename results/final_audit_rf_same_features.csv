@@ -1,0 +1,10 @@
+beta,policy,test cost,% reduction vs best fixed
+2,"Cost-aware RF, 26 features (main)",0.6873408753934893,12.944819597806916
+2,"Cost-aware RF, same 8 features as trees",0.6914817684285538,12.420354658940372
+2,"OPT-exact [full], 8 features",0.6985155843476547,11.529486480319976
+5,"Cost-aware RF, 26 features (main)",0.7840728850850647,21.59271149149353
+5,"Cost-aware RF, same 8 features as trees",0.7864743749258922,21.352562507410777
+5,"OPT-exact [full], 8 features",0.7990195762882003,20.098042371179968
+10,"Cost-aware RF, 26 features (main)",0.8326333015869437,16.73666984130563
+10,"Cost-aware RF, same 8 features as trees",0.8360254805216435,16.397451947835652
+10,"OPT-exact [full], 8 features",0.8467706704197788,15.322932958022118
