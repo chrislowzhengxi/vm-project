@@ -1,0 +1,166 @@
+beta,dimensions,policy,dominated,dominated by
+2,reservation vs expected shortfall,Best fixed (val),False,
+2,reservation vs expected shortfall,H1 customer mean + margin,False,
+2,reservation vs expected shortfall,RF point -> tier,False,
+2,reservation vs expected shortfall,RF point + margin,False,
+2,reservation vs expected shortfall,Greedy depth 3,True,OPT depth 4 (certified)
+2,reservation vs expected shortfall,OPT depth 3,True,RF point + margin
+2,reservation vs expected shortfall,OPT 4-leaf (depth 2),True,OPT depth 4 (certified)
+2,reservation vs expected shortfall,OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+2,reservation vs expected shortfall,OPT depth 4 (certified),False,
+2,reservation vs expected shortfall,Cost-aware RF,True,Forest-weighted prescription
+2,reservation vs expected shortfall,Forest-weighted prescription,False,
+2,reservation vs exceedance,Best fixed (val),False,
+2,reservation vs exceedance,H1 customer mean + margin,False,
+2,reservation vs exceedance,RF point -> tier,False,
+2,reservation vs exceedance,RF point + margin,True,Greedy depth 3; OPT 4-leaf (depth 2)
+2,reservation vs exceedance,Greedy depth 3,False,
+2,reservation vs exceedance,OPT depth 3,False,
+2,reservation vs exceedance,OPT 4-leaf (depth 2),False,
+2,reservation vs exceedance,OPT leaf-penalized (val-selected),False,
+2,reservation vs exceedance,OPT depth 4 (certified),False,
+2,reservation vs exceedance,Cost-aware RF,True,Forest-weighted prescription
+2,reservation vs exceedance,Forest-weighted prescription,False,
+2,reservation vs severe shortfall (>20pp),Best fixed (val),False,
+2,reservation vs severe shortfall (>20pp),H1 customer mean + margin,False,
+2,reservation vs severe shortfall (>20pp),RF point -> tier,False,
+2,reservation vs severe shortfall (>20pp),RF point + margin,True,OPT 4-leaf (depth 2); OPT depth 4 (certified)
+2,reservation vs severe shortfall (>20pp),Greedy depth 3,True,OPT leaf-penalized (val-selected); OPT depth 4 (certified)
+2,reservation vs severe shortfall (>20pp),OPT depth 3,False,
+2,reservation vs severe shortfall (>20pp),OPT 4-leaf (depth 2),False,
+2,reservation vs severe shortfall (>20pp),OPT leaf-penalized (val-selected),False,
+2,reservation vs severe shortfall (>20pp),OPT depth 4 (certified),False,
+2,reservation vs severe shortfall (>20pp),Cost-aware RF,False,
+2,reservation vs severe shortfall (>20pp),Forest-weighted prescription,False,
+2,cost vs exceedance,Best fixed (val),True,H1 customer mean + margin; RF point -> tier; RF point + margin; Greedy depth 3; OPT depth 3; OPT 4-leaf (depth 2); OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+2,cost vs exceedance,H1 customer mean + margin,True,RF point -> tier; RF point + margin; Greedy depth 3; OPT depth 3; OPT 4-leaf (depth 2); OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+2,cost vs exceedance,RF point -> tier,False,
+2,cost vs exceedance,RF point + margin,False,
+2,cost vs exceedance,Greedy depth 3,True,RF point -> tier; OPT depth 3; OPT 4-leaf (depth 2)
+2,cost vs exceedance,OPT depth 3,True,RF point -> tier
+2,cost vs exceedance,OPT 4-leaf (depth 2),True,RF point -> tier; OPT depth 3
+2,cost vs exceedance,OPT leaf-penalized (val-selected),True,RF point -> tier; RF point + margin; OPT depth 4 (certified)
+2,cost vs exceedance,OPT depth 4 (certified),False,
+2,cost vs exceedance,Cost-aware RF,True,Forest-weighted prescription
+2,cost vs exceedance,Forest-weighted prescription,False,
+2,"reservation, shortfall, exceedance, severe (all 4)",Best fixed (val),False,
+2,"reservation, shortfall, exceedance, severe (all 4)",H1 customer mean + margin,False,
+2,"reservation, shortfall, exceedance, severe (all 4)",RF point -> tier,False,
+2,"reservation, shortfall, exceedance, severe (all 4)",RF point + margin,False,
+2,"reservation, shortfall, exceedance, severe (all 4)",Greedy depth 3,False,
+2,"reservation, shortfall, exceedance, severe (all 4)",OPT depth 3,False,
+2,"reservation, shortfall, exceedance, severe (all 4)",OPT 4-leaf (depth 2),False,
+2,"reservation, shortfall, exceedance, severe (all 4)",OPT leaf-penalized (val-selected),False,
+2,"reservation, shortfall, exceedance, severe (all 4)",OPT depth 4 (certified),False,
+2,"reservation, shortfall, exceedance, severe (all 4)",Cost-aware RF,False,
+2,"reservation, shortfall, exceedance, severe (all 4)",Forest-weighted prescription,False,
+5,reservation vs expected shortfall,Best fixed (val),False,
+5,reservation vs expected shortfall,H1 customer mean + margin,True,Cost-aware RF
+5,reservation vs expected shortfall,RF point -> tier,False,
+5,reservation vs expected shortfall,RF point + margin,True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs expected shortfall,Greedy depth 3,False,
+5,reservation vs expected shortfall,OPT depth 3,True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs expected shortfall,OPT 4-leaf (depth 2),False,
+5,reservation vs expected shortfall,OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs expected shortfall,OPT depth 4 (certified),False,
+5,reservation vs expected shortfall,Cost-aware RF,False,
+5,reservation vs expected shortfall,Forest-weighted prescription,True,Cost-aware RF
+5,reservation vs exceedance,Best fixed (val),False,
+5,reservation vs exceedance,H1 customer mean + margin,True,Cost-aware RF
+5,reservation vs exceedance,RF point -> tier,False,
+5,reservation vs exceedance,RF point + margin,True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs exceedance,Greedy depth 3,False,
+5,reservation vs exceedance,OPT depth 3,True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs exceedance,OPT 4-leaf (depth 2),False,
+5,reservation vs exceedance,OPT leaf-penalized (val-selected),False,
+5,reservation vs exceedance,OPT depth 4 (certified),False,
+5,reservation vs exceedance,Cost-aware RF,False,
+5,reservation vs exceedance,Forest-weighted prescription,True,Cost-aware RF
+5,reservation vs severe shortfall (>20pp),Best fixed (val),False,
+5,reservation vs severe shortfall (>20pp),H1 customer mean + margin,True,Cost-aware RF
+5,reservation vs severe shortfall (>20pp),RF point -> tier,False,
+5,reservation vs severe shortfall (>20pp),RF point + margin,True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs severe shortfall (>20pp),Greedy depth 3,True,OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+5,reservation vs severe shortfall (>20pp),OPT depth 3,True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs severe shortfall (>20pp),OPT 4-leaf (depth 2),True,OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+5,reservation vs severe shortfall (>20pp),OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+5,reservation vs severe shortfall (>20pp),OPT depth 4 (certified),False,
+5,reservation vs severe shortfall (>20pp),Cost-aware RF,False,
+5,reservation vs severe shortfall (>20pp),Forest-weighted prescription,True,Cost-aware RF
+5,cost vs exceedance,Best fixed (val),False,
+5,cost vs exceedance,H1 customer mean + margin,True,RF point + margin; Greedy depth 3; OPT depth 3; OPT 4-leaf (depth 2); OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+5,cost vs exceedance,RF point -> tier,True,H1 customer mean + margin; RF point + margin; Greedy depth 3; OPT depth 3; OPT 4-leaf (depth 2); OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+5,cost vs exceedance,RF point + margin,True,Greedy depth 3; OPT depth 3; OPT 4-leaf (depth 2); OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+5,cost vs exceedance,Greedy depth 3,False,
+5,cost vs exceedance,OPT depth 3,True,OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+5,cost vs exceedance,OPT 4-leaf (depth 2),False,
+5,cost vs exceedance,OPT leaf-penalized (val-selected),True,OPT depth 4 (certified)
+5,cost vs exceedance,OPT depth 4 (certified),False,
+5,cost vs exceedance,Cost-aware RF,False,
+5,cost vs exceedance,Forest-weighted prescription,True,Cost-aware RF
+5,"reservation, shortfall, exceedance, severe (all 4)",Best fixed (val),False,
+5,"reservation, shortfall, exceedance, severe (all 4)",H1 customer mean + margin,True,Cost-aware RF
+5,"reservation, shortfall, exceedance, severe (all 4)",RF point -> tier,False,
+5,"reservation, shortfall, exceedance, severe (all 4)",RF point + margin,True,Cost-aware RF; Forest-weighted prescription
+5,"reservation, shortfall, exceedance, severe (all 4)",Greedy depth 3,False,
+5,"reservation, shortfall, exceedance, severe (all 4)",OPT depth 3,True,Cost-aware RF; Forest-weighted prescription
+5,"reservation, shortfall, exceedance, severe (all 4)",OPT 4-leaf (depth 2),False,
+5,"reservation, shortfall, exceedance, severe (all 4)",OPT leaf-penalized (val-selected),False,
+5,"reservation, shortfall, exceedance, severe (all 4)",OPT depth 4 (certified),False,
+5,"reservation, shortfall, exceedance, severe (all 4)",Cost-aware RF,False,
+5,"reservation, shortfall, exceedance, severe (all 4)",Forest-weighted prescription,True,Cost-aware RF
+10,reservation vs expected shortfall,Best fixed (val),False,
+10,reservation vs expected shortfall,H1 customer mean + margin,True,RF point + margin
+10,reservation vs expected shortfall,RF point -> tier,False,
+10,reservation vs expected shortfall,RF point + margin,False,
+10,reservation vs expected shortfall,Greedy depth 3,True,Cost-aware RF; Forest-weighted prescription
+10,reservation vs expected shortfall,OPT depth 3,False,
+10,reservation vs expected shortfall,OPT 4-leaf (depth 2),False,
+10,reservation vs expected shortfall,OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+10,reservation vs expected shortfall,OPT depth 4 (certified),False,
+10,reservation vs expected shortfall,Cost-aware RF,False,
+10,reservation vs expected shortfall,Forest-weighted prescription,False,
+10,reservation vs exceedance,Best fixed (val),False,
+10,reservation vs exceedance,H1 customer mean + margin,True,RF point + margin
+10,reservation vs exceedance,RF point -> tier,False,
+10,reservation vs exceedance,RF point + margin,False,
+10,reservation vs exceedance,Greedy depth 3,True,Cost-aware RF; Forest-weighted prescription
+10,reservation vs exceedance,OPT depth 3,False,
+10,reservation vs exceedance,OPT 4-leaf (depth 2),False,
+10,reservation vs exceedance,OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+10,reservation vs exceedance,OPT depth 4 (certified),False,
+10,reservation vs exceedance,Cost-aware RF,False,
+10,reservation vs exceedance,Forest-weighted prescription,False,
+10,reservation vs severe shortfall (>20pp),Best fixed (val),False,
+10,reservation vs severe shortfall (>20pp),H1 customer mean + margin,True,RF point + margin
+10,reservation vs severe shortfall (>20pp),RF point -> tier,False,
+10,reservation vs severe shortfall (>20pp),RF point + margin,False,
+10,reservation vs severe shortfall (>20pp),Greedy depth 3,True,Cost-aware RF; Forest-weighted prescription
+10,reservation vs severe shortfall (>20pp),OPT depth 3,False,
+10,reservation vs severe shortfall (>20pp),OPT 4-leaf (depth 2),True,OPT depth 4 (certified)
+10,reservation vs severe shortfall (>20pp),OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+10,reservation vs severe shortfall (>20pp),OPT depth 4 (certified),False,
+10,reservation vs severe shortfall (>20pp),Cost-aware RF,False,
+10,reservation vs severe shortfall (>20pp),Forest-weighted prescription,False,
+10,cost vs exceedance,Best fixed (val),False,
+10,cost vs exceedance,H1 customer mean + margin,True,RF point + margin; Greedy depth 3; OPT depth 3; OPT 4-leaf (depth 2); OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,RF point -> tier,True,Best fixed (val); H1 customer mean + margin; RF point + margin; Greedy depth 3; OPT depth 3; OPT 4-leaf (depth 2); OPT leaf-penalized (val-selected); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,RF point + margin,True,OPT depth 3; OPT 4-leaf (depth 2); OPT depth 4 (certified); Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,Greedy depth 3,True,Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,OPT depth 3,True,Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,OPT 4-leaf (depth 2),True,Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,OPT depth 4 (certified),True,Cost-aware RF; Forest-weighted prescription
+10,cost vs exceedance,Cost-aware RF,False,
+10,cost vs exceedance,Forest-weighted prescription,True,Cost-aware RF
+10,"reservation, shortfall, exceedance, severe (all 4)",Best fixed (val),False,
+10,"reservation, shortfall, exceedance, severe (all 4)",H1 customer mean + margin,True,RF point + margin
+10,"reservation, shortfall, exceedance, severe (all 4)",RF point -> tier,False,
+10,"reservation, shortfall, exceedance, severe (all 4)",RF point + margin,False,
+10,"reservation, shortfall, exceedance, severe (all 4)",Greedy depth 3,True,Cost-aware RF; Forest-weighted prescription
+10,"reservation, shortfall, exceedance, severe (all 4)",OPT depth 3,False,
+10,"reservation, shortfall, exceedance, severe (all 4)",OPT 4-leaf (depth 2),False,
+10,"reservation, shortfall, exceedance, severe (all 4)",OPT leaf-penalized (val-selected),True,Cost-aware RF; Forest-weighted prescription
+10,"reservation, shortfall, exceedance, severe (all 4)",OPT depth 4 (certified),False,
+10,"reservation, shortfall, exceedance, severe (all 4)",Cost-aware RF,False,
+10,"reservation, shortfall, exceedance, severe (all 4)",Forest-weighted prescription,False,

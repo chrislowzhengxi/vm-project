@@ -1,0 +1,14 @@
+beta,2,2,2,2,2,5,5,5,5,5,10,10,10,10,10
+dimensions,reservation vs expected shortfall,reservation vs exceedance,reservation vs severe shortfall (>20pp),cost vs exceedance,"reservation, shortfall, exceedance, severe (all 4)",reservation vs expected shortfall,reservation vs exceedance,reservation vs severe shortfall (>20pp),cost vs exceedance,"reservation, shortfall, exceedance, severe (all 4)",reservation vs expected shortfall,reservation vs exceedance,reservation vs severe shortfall (>20pp),cost vs exceedance,"reservation, shortfall, exceedance, severe (all 4)"
+policy,,,,,,,,,,,,,,,
+Best fixed (val),-,-,-,dominated,-,-,-,-,-,-,-,-,-,-,-
+H1 customer mean + margin,-,-,-,dominated,-,dominated,dominated,dominated,dominated,dominated,dominated,dominated,dominated,dominated,dominated
+RF point -> tier,-,-,-,-,-,-,-,-,dominated,-,-,-,-,dominated,-
+RF point + margin,-,dominated,dominated,-,-,dominated,dominated,dominated,dominated,dominated,-,-,-,dominated,-
+Greedy depth 3,dominated,-,dominated,dominated,-,-,-,dominated,-,-,dominated,dominated,dominated,dominated,dominated
+OPT depth 3,dominated,-,-,dominated,-,dominated,dominated,dominated,dominated,dominated,-,-,-,dominated,-
+OPT 4-leaf (depth 2),dominated,-,-,dominated,-,-,-,dominated,-,-,-,-,dominated,dominated,-
+OPT leaf-penalized (val-selected),dominated,-,-,dominated,-,dominated,-,dominated,dominated,-,dominated,dominated,dominated,dominated,dominated
+OPT depth 4 (certified),-,-,-,-,-,-,-,-,-,-,-,-,-,dominated,-
+Cost-aware RF,dominated,dominated,-,dominated,-,-,-,-,-,-,-,-,-,-,-
+Forest-weighted prescription,-,-,-,-,-,dominated,dominated,dominated,dominated,dominated,-,-,-,dominated,-

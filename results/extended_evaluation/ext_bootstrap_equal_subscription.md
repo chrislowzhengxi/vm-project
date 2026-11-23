@@ -1,0 +1,14 @@
+|                                                                              |   beta | weighting                                              |   A - B |   95% CI low |   95% CI high | CI excludes 0   |
+|:-----------------------------------------------------------------------------|-------:|:-------------------------------------------------------|--------:|-------------:|--------------:|:----------------|
+| ('Cost-aware RF - OPT depth 3', 'cost')                                      |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -0.0133 |      -0.0199 |       -0.0073 | True            |
+| ('Cost-aware RF - OPT depth 3', 'P(Y>r) (% pts)')                            |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -2.7849 |      -3.5772 |       -2.0598 | True            |
+| ('Cost-aware RF - OPT depth 3', 'E[(Y-r)+] (pp of VM)')                      |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -0.6916 |      -0.8399 |       -0.5519 | True            |
+| ('Greedy depth 3 - OPT depth 3', 'cost')                                     |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -0.0071 |      -0.0109 |       -0.0036 | True            |
+| ('Greedy depth 3 - OPT depth 3', 'P(Y>r) (% pts)')                           |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -1.6907 |      -2.3323 |       -1.1038 | True            |
+| ('Greedy depth 3 - OPT depth 3', 'E[(Y-r)+] (pp of VM)')                     |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -0.2629 |      -0.3602 |       -0.1725 | True            |
+| ('OPT 4-leaf (depth 2) - OPT depth 3', 'cost')                               |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -0.0057 |      -0.0111 |       -0.0005 | True            |
+| ('OPT 4-leaf (depth 2) - OPT depth 3', 'P(Y>r) (% pts)')                     |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -1.8535 |      -2.6495 |       -1.1900 | True            |
+| ('OPT 4-leaf (depth 2) - OPT depth 3', 'E[(Y-r)+] (pp of VM)')               |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -0.2241 |      -0.3624 |       -0.0997 | True            |
+| ('Forest-weighted prescription - RF point + margin', 'cost')                 |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) | -0.0276 |      -0.0334 |       -0.0220 | True            |
+| ('Forest-weighted prescription - RF point + margin', 'P(Y>r) (% pts)')       |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) |  1.3078 |       0.6427 |        1.9417 | True            |
+| ('Forest-weighted prescription - RF point + margin', 'E[(Y-r)+] (pp of VM)') |      5 | equal-subscription (subs with >= 5 test VMs, n = 1036) |  0.1673 |       0.0418 |        0.2924 | True            |

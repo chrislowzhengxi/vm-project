@@ -1,0 +1,13 @@
+comparison (A - B),metric,beta,weighting,A - B,95% CI low,95% CI high,CI excludes 0
+Cost-aware RF - OPT depth 3,cost,5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-0.013332302514360567,-0.019856148414023472,-0.007282162520814341,True
+Cost-aware RF - OPT depth 3,P(Y>r) (% pts),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-2.784923585838635,-3.5772387276496156,-2.059818727416377,True
+Cost-aware RF - OPT depth 3,E[(Y-r)+] (pp of VM),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-0.691603049649649,-0.8398632563699385,-0.551929326302519,True
+Greedy depth 3 - OPT depth 3,cost,5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-0.007128214149169844,-0.010906446743881545,-0.0036073934975488116,True
+Greedy depth 3 - OPT depth 3,P(Y>r) (% pts),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-1.6907184410867235,-2.332272984274415,-1.1038213301362283,True
+Greedy depth 3 - OPT depth 3,E[(Y-r)+] (pp of VM),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-0.26292510911578537,-0.3601860193338549,-0.1724823819539385,True
+OPT 4-leaf (depth 2) - OPT depth 3,cost,5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-0.005736696382097862,-0.011078388339091558,-0.00048658450855300047,True
+OPT 4-leaf (depth 2) - OPT depth 3,P(Y>r) (% pts),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-1.853520279804889,-2.649479676756998,-1.1899742406746385,True
+OPT 4-leaf (depth 2) - OPT depth 3,E[(Y-r)+] (pp of VM),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-0.2241071412748668,-0.36239876316196856,-0.09968173103869782,True
+Forest-weighted prescription - RF point + margin,cost,5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",-0.02758835787636473,-0.03335765964514447,-0.021998025631954434,True
+Forest-weighted prescription - RF point + margin,P(Y>r) (% pts),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",1.3077640044227332,0.6426637525112773,1.941703209245957,True
+Forest-weighted prescription - RF point + margin,E[(Y-r)+] (pp of VM),5,"equal-subscription (subs with >= 5 test VMs, n = 1036)",0.16729638582564382,0.04176933316713373,0.29235916426988734,True

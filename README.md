@@ -128,3 +128,24 @@ write them.
 
 `src/final_lib.solve_opt_exact` gained two backward-compatible options, a `leaf_penalty` (default 0) and exact
 `depth=4` with a `time_limit`. Defaults reproduce the earlier results bit for bit (see `tests/test_sensitivity.py`).
+
+---
+
+## Extended evaluation beyond modeled cost (stage 12)
+
+Findings: **[EXTENDED_EVALUATION_FINDINGS.md](EXTENDED_EVALUATION_FINDINGS.md)**. Covers operational risk (exceedance,
+shortfall severity), reserving less vs targeting, cost-vs-risk frontiers, customer-level heterogeneity, workload
+segments, predictive quality and calibration, oracle regret, disagreement and a focused bootstrap. It reads saved
+actions, predictions and trees and retrains no policy; test data are used only retrospectively.
+
+```bash
+./run_extended_evaluation.sh                # full test suite + stage 12 (~25 s after tests)
+./run_extended_evaluation.sh --skip-tests   # stage 12 only
+```
+
+| script | what it does |
+|---|---|
+| `src/evaluation_metrics_lib.py` | exceedance / severity / decomposition metrics, weighted quantiles, oracle regret, untargeted counterfactuals, mixture frontiers, Pareto, disagreement, multi-metric cluster bootstrap |
+| `src/12_extended_evaluation.py` | stage 12; 84 consistency checks against the finalized tables |
+
+Outputs: `results/extended_evaluation/`, `figures/extended_evaluation/`. Tests: `tests/test_extended_evaluation.py`.

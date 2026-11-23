@@ -1,0 +1,90 @@
+\begin{thebibliography}{14}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Amram et~al.(2022)Amram, Dunn, and Zhuo]{amram2022opt}
+M.~Amram, J.~Dunn, and Y.~D. Zhuo.
+\newblock Optimal policy trees.
+\newblock \emph{Machine Learning}, 111\penalty0 (7):\penalty0 2741--2768, 2022.
+\newblock \doi{10.1007/s10994-022-06128-5}.
+
+\bibitem[Bertsimas and Dunn(2017)]{bertsimas2017oct}
+D.~Bertsimas and J.~Dunn.
+\newblock Optimal classification trees.
+\newblock \emph{Machine Learning}, 106\penalty0 (7):\penalty0 1039--1082, 2017.
+\newblock \doi{10.1007/s10994-017-5633-9}.
+
+\bibitem[Bertsimas and Dunn(2019)]{bertsimas2019mlopt}
+D.~Bertsimas and J.~Dunn.
+\newblock \emph{Machine Learning under a Modern Optimization Lens}.
+\newblock Dynamic Ideas LLC, Belmont, MA, 2019.
+\newblock ISBN 978-1-7337885-0-2.
+
+\bibitem[Bertsimas and Kallus(2020)]{bertsimas2020predictive}
+D.~Bertsimas and N.~Kallus.
+\newblock From predictive to prescriptive analytics.
+\newblock \emph{Management Science}, 66\penalty0 (3):\penalty0 1025--1044, 2020.
+\newblock \doi{10.1287/mnsc.2018.3253}.
+
+\bibitem[Bertsimas et~al.(2021)Bertsimas, Orfanoudaki, and Wiberg]{bertsimas2021clustering}
+D.~Bertsimas, A.~Orfanoudaki, and H.~Wiberg.
+\newblock Interpretable clustering: An optimization approach.
+\newblock \emph{Machine Learning}, 110\penalty0 (1):\penalty0 89--138, 2021.
+\newblock \doi{10.1007/s10994-020-05896-2}.
+
+\bibitem[Breiman(2001)]{breiman2001rf}
+L.~Breiman.
+\newblock Random forests.
+\newblock \emph{Machine Learning}, 45\penalty0 (1):\penalty0 5--32, 2001.
+\newblock \doi{10.1023/A:1010933404324}.
+
+\bibitem[Cortez et~al.(2017)Cortez, Bonde, Muzio, Russinovich, Fontoura, and Bianchini]{cortez2017resource}
+E.~Cortez, A.~Bonde, A.~Muzio, M.~Russinovich, M.~Fontoura, and R.~Bianchini.
+\newblock Resource central: Understanding and predicting workloads for improved resource management in large cloud platforms.
+\newblock In \emph{Proceedings of the 26th Symposium on Operating Systems Principles (SOSP)}, pages 153--167. ACM, 2017.
+\newblock \doi{10.1145/3132747.3132772}.
+
+\bibitem[Elmachtoub and Grigas(2022)]{elmachtoub2022spo}
+A.~N. Elmachtoub and P.~Grigas.
+\newblock Smart ``predict, then optimize''.
+\newblock \emph{Management Science}, 68\penalty0 (1):\penalty0 9--26, 2022.
+\newblock \doi{10.1287/mnsc.2020.3922}.
+
+\bibitem[{Interpretable AI, LLC}()]{iai}
+{Interpretable AI, LLC}.
+\newblock Interpretable {AI} software and documentation, version 3.2.2.
+\newblock \url{https://docs.interpretable.ai}.
+
+\bibitem[Lloyd(1982)]{lloyd1982kmeans}
+S.~P. Lloyd.
+\newblock Least squares quantization in {PCM}.
+\newblock \emph{IEEE Transactions on Information Theory}, 28\penalty0 (2):\penalty0 129--137, 1982.
+\newblock \doi{10.1109/TIT.1982.1056489}.
+
+\bibitem[Meinshausen(2006)]{meinshausen2006qrf}
+N.~Meinshausen.
+\newblock Quantile regression forests.
+\newblock \emph{Journal of Machine Learning Research}, 7:\penalty0 983--999, 2006.
+
+\bibitem[{Microsoft Azure}()]{azuredataset}
+{Microsoft Azure}.
+\newblock Azure public dataset: {AzurePublicDatasetV2} ({VM} trace, 2019).
+\newblock \url{https://github.com/Azure/AzurePublicDataset}.
+\newblock Accessed November 2026.
+
+\bibitem[Sverdrup et~al.(2020)Sverdrup, Kanodia, Zhou, Athey, and Wager]{sverdrup2020policytree}
+E.~Sverdrup, A.~Kanodia, Z.~Zhou, S.~Athey, and S.~Wager.
+\newblock policytree: Policy learning via doubly robust empirical welfare maximization over trees.
+\newblock \emph{Journal of Open Source Software}, 5\penalty0 (50):\penalty0 2232, 2020.
+\newblock \doi{10.21105/joss.02232}.
+
+\bibitem[Zhou et~al.(2023)Zhou, Athey, and Wager]{zhou2023offline}
+Z.~Zhou, S.~Athey, and S.~Wager.
+\newblock Offline multi-action policy learning: Generalization and optimization.
+\newblock \emph{Operations Research}, 71\penalty0 (1):\penalty0 148--183, 2023.
+\newblock \doi{10.1287/opre.2022.2271}.
+
+\end{thebibliography}

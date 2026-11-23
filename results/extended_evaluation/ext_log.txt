@@ -1,0 +1,24 @@
+[     1s] policies loaded and verified (37 checks)
+[     2s] A operational metrics done
+[     2s] B mechanism done
+[     4s] C cost-vs-risk done
+[     7s] D customers done
+[    10s] E segments done
+[    21s] F prediction done
+[    22s] G regret / disagreement done
+[    22s] H bootstrap done
+                                       cost      E[r]    P(Y>r)     E[sf]  P(sf>20pp)  % of attainable saving captured
+policy                                                                                                                
+Best fixed (val)                   1.000000  1.000000  0.000000  0.000000    0.000000                         0.000000
+H1 customer mean + margin          0.808557  0.724864  0.116541  0.016739    0.034975                        46.580436
+RF point -> tier                   0.857576  0.590285  0.299302  0.053458    0.131239                        34.653456
+RF point + margin                  0.802319  0.732026  0.099579  0.014059    0.027722                        48.098115
+Greedy depth 3                     0.800356  0.743123  0.081233  0.011447    0.022528                        48.575646
+OPT depth 3                        0.799020  0.733813  0.092537  0.013041    0.025616                        48.900914
+OPT 4-leaf (depth 2)               0.801861  0.745859  0.077243  0.011200    0.022118                        48.209599
+OPT leaf-penalized (val-selected)  0.796138  0.735207  0.085844  0.012186    0.024398                        49.601996
+OPT depth 4 (certified)            0.794985  0.737601  0.084260  0.011477    0.020277                        49.882544
+Cost-aware RF                      0.784073  0.724845  0.091152  0.011846    0.021903                        52.537620
+Forest-weighted prescription       0.785665  0.724886  0.091712  0.012156    0.021926                        52.150356
+Oracle (hindsight)                 0.589005  0.576661  0.099401  0.002469    0.000000                       100.000000
+[    23s] Stage 12 done (84 consistency checks passed)
