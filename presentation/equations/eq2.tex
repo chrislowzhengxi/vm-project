@@ -1,0 +1,8 @@
+\documentclass[border=2pt]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\definecolor{ink}{HTML}{1F1F1F}
+\begin{document}
+\color{ink}
+$\displaystyle V_d(R)=\min\Big\{\underbrace{\min_{k}\sum_{i\in R}C_{ik}}_{\text{leaf (only if }|R|\ge m)},\;\;\underbrace{\min_{j,\theta}\big[\,V_{d-1}(R\cap\{x_j\le\theta\})+V_{d-1}(R\cap\{x_j>\theta\})\,\big]}_{\text{best split, both children solved optimally}}\Big\}$
+\end{document}

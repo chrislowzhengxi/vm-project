@@ -431,17 +431,27 @@ So, three takeaways. Customer history carries most of the signal. Deciding on co
 pres.addSection({ title: "Backup (not presented)" });
 {
   const s = content("Backup", "Backup: the exact solver and what it certifies", "Backup (not presented)");
+  // Equations are typeset in LaTeX (equations/eqN.tex) and rasterized at 600 dpi to assets/eq_N.png.
+  // EQ_SCALE 1.55 makes 10pt LaTeX read at about 15.5pt on the slide.
+  const EQ_SCALE = 1.55;
+  const EQ_PX = { 1: [3146, 119], 2: [3088, 381], 3: [1883, 232], 4: [1598, 277] };
   const rows = [
-    ["Tree class Π(D, m)", "Depth ≤ D; each split is x_j ≤ θ for one of 8 features and one of its 31 candidate thresholds; every leaf holds ≥ m training VMs; any of the 4 tiers per leaf."],
-    ["Recursion", "V_d(R) = min of two options:\nleaf: min_k Σ_{i∈R} C_ik  (allowed if |R| ≥ m)\nsplit: min_{j,θ} [ V_{d−1}(R ∩ {x_j ≤ θ}) + V_{d−1}(R ∩ {x_j > θ}) ]"],
-    ["Why it is fast", "Leaf cost is linear in 4 sufficient statistics for every β: Σ C_ik = n_L r_k + β S_L,k. The 1.70M training VMs collapse to 46,673 distinct patterns; 3-D histograms with 2-D prefix sums price all lower splits at once. Depth 3: ~5 s. Depth 4: 28–36 min."],
-    ["What is certified", "A global minimizer of training cost within Π(D, m) only. Not continuous thresholds, other features, deeper trees, or test performance."],
+    ["Tree class", 1, "8 creation-time features, 31 candidate thresholds each; every leaf takes one of the 4 tiers.", 0.95],
+    ["Recursion", 2, null, 1.2],
+    ["Why it is fast", 3, "Leaf cost depends on 4 sufficient statistics for every \u03b2. The 1.70M training VMs collapse to 46,673 patterns; 3-D histograms with 2-D prefix sums price all lower splits at once. Depth 3: ~5 s; depth 4: 28\u201336 min.", 1.35],
+    ["What is certified", 4, "Global minimum of training cost in this class only: not other features, deeper trees, or test cost.", 1.15],
   ];
-  rows.forEach(([k, v], i) => {
-    const y = 1.75 + i * 1.2;
-    card(s, 0.6, y, 12.13, 1.05);
-    T(s, k, { x: 0.95, y, w: 2.6, h: 1.05, fontSize: 16, bold: true, color: NUM, valign: "middle" });
-    T(s, v, { x: 3.6, y, w: 8.95, h: 1.05, fontSize: 14, valign: "middle" });
+  let y = 1.6;
+  rows.forEach(([k, n, cap, h]) => {
+    card(s, 0.6, y, 12.13, h);
+    T(s, k, { x: 0.95, y, w: 2.5, h, fontSize: 16, bold: true, color: NUM, valign: "middle" });
+    const [pw, ph] = EQ_PX[n];
+    const ew = pw / 600 * EQ_SCALE, eh = ph / 600 * EQ_SCALE;
+    const capH = cap ? 0.5 : 0;
+    const top = y + (h - eh - capH) / 2;
+    s.addImage({ path: "assets/eq_" + n + ".png", x: 3.6, y: top, w: ew, h: eh, altText: k + " equation (LaTeX)" });
+    if (cap) T(s, cap, { x: 3.6, y: top + eh + 0.04, w: 8.95, h: capH, fontSize: 13, color: MUTED, valign: "top" });
+    y += h + 0.1;
   });
   notes(s, `[Backup, for questions]
 If asked why the tree is "exact": the tree class is finite, so the dynamic program can evaluate every allowed split. That gives a certificate by enumeration, not an MIO bound. The certificate is about training cost in this class only. It says nothing about test performance, other features, or continuous thresholds.`);

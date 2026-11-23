@@ -11,7 +11,8 @@ An 8-minute deck for MIT 15.095, in 13.33 × 7.5 widescreen. It has 9 main slide
 | `PRESENTATION_SOURCE_AUDIT.md` | Where every number comes from, plus issues noticed in the report |
 | `build_deck.js` | Generator (pptxgenjs); all slide content and notes live here |
 | `build.sh` | Rebuilds the .pptx, strips ZIP folder entries, exports the PDF, renders `previews/` |
-| `assets/` | Backup-slide figures (report Figures 3 and 4 at 400 dpi) |
+| `assets/` | Backup-slide figures (report Figures 3 and 4 at 400 dpi) and LaTeX equation images |
+| `equations/` | LaTeX sources for the slide 10 equations |
 | `previews/` | PNG renders of every slide, for checking layout |
 
 ## Editing in PowerPoint or Google Slides
@@ -25,6 +26,9 @@ An 8-minute deck for MIT 15.095, in 13.33 × 7.5 widescreen. It has 9 main slide
   slide numbers.
 * **Backup images:** the backup slides use two PNG figures from the report. Edit those in `report/` and re-render if
   needed.
+* **Equations (backup slide 10):** typeset in LaTeX and inserted as transparent 600 dpi PNGs (`assets/eq_1.png` to
+  `eq_4.png`), so they are pictures, not editable text, in PowerPoint and Google Slides. To change one, edit
+  `equations/eqN.tex` and re-render (below). If its pixel size changes, update `EQ_PX` in `build_deck.js`.
 
 ## Regenerating
 
@@ -41,6 +45,17 @@ backup images:
 for f in fig_beta_risk fig_customers; do
   gs -q -dNOPAUSE -dBATCH -sDEVICE=png16m -r400 -sOutputFile=assets/$f.png ../report/figures/$f.pdf
 done
+```
+
+To re-render the slide 10 equations:
+
+```bash
+cd equations
+for i in 1 2 3 4; do
+  pdflatex -interaction=nonstopmode eq$i.tex >/dev/null
+  gs -q -dNOPAUSE -dBATCH -sDEVICE=pngalpha -r600 -sOutputFile=../assets/eq_$i.png eq$i.pdf
+done
+rm -f *.aux *.log; file ../assets/eq_*.png   # pixel sizes for EQ_PX
 ```
 
 Rebuilding overwrites the `.pptx`. Make manual PowerPoint or Google Slides edits in a copy, or carry them back into
